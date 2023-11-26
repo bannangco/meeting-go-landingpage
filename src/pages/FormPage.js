@@ -8,6 +8,7 @@ const Positioner = styled.div`
   justify-content: space-between; // To push the content to the top and button to the bottom
   align-items: center; // Center content horizontally
   width: 100%;
+  min-width: 307px;
   background-color: #fdf6f7;
 `;
 
