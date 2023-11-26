@@ -6,9 +6,12 @@ const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+
   padding: 0 20px;
   z-index: 10;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Logo = styled.img`
@@ -70,10 +73,14 @@ const SpecialButton = styled(NavLink)`
   }
 `;
 
-const Copyright = styled.div`
+const Copyright1 = styled.div`
 color: #fff;
 padding:20px;
 margin-left: auto;
+
+@media (max-width: 768px) {
+    display: none;
+  }
 `
 
 function Footer() {
@@ -96,7 +103,7 @@ function Footer() {
         <SpecialButton to="/form">Mobile app</SpecialButton>
         <SpecialButton to="/form">Community</SpecialButton>
         <SpecialButton to="/form">Company</SpecialButton>
-        <Copyright>&copy; Bannangco.Corp.2023 Garage to Space Station</Copyright>
+        <Copyright1>&copy;Bannangco.Corp.2023<br></br> Garage to Space Station</Copyright1>
       </NavBarRight>
     </FooterContainer>
   );
