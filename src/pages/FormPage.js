@@ -8,6 +8,7 @@ const Positioner = styled.div`
   justify-content: space-between; // To push the content to the top and button to the bottom
   align-items: center; // Center content horizontally
   width: 100%;
+  min-width: 307px;
   background-color: #fdf6f7;
 `;
 
@@ -17,10 +18,15 @@ const MaxWidthWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 500px; // Set the maximum width for large screens
-  margin: 0 auto; // This will center the div if the screen is larger than max-width
+  max-width: 500px;
+  margin: 0 auto; 
   background-color: #f8d7da;
-  padding: 5vh 5vw; // Add some padding
+  padding: 5vh 5vw;
+
+  @media (max-width: 768px) {
+    width: auto; // Take the full width of the screen
+    padding: 5vh 5%; // Use percentage for responsive padding
+  }
 `;
 
 
@@ -36,38 +42,57 @@ const Description1 = styled.p` // Use <p> for text, styled as h3
   font-size: 1rem;
   text-align: center; // Center the text
   margin: 2vh 0; // Add top and bottom margin
+
+  @media (max-width: 768px) {
+    width: auto; // Take the full width of the screen
+    padding: 1vh 5%; // Use percentage for responsive padding
+    font-size: 0.72rem;
+  }
 `;
 
 const Description2 = styled.p` // Use <p> for text, styled as h3
   font-weight: bold;
   font-size: 1.1rem;
   text-align: center; // Center the text
-  margin: 2vh 0; // Add top and bottom margin
+  margin: 2vh 0;
+
 `;
 
 // Styling for the iframe that will contain the Google Form
 const GoogleFormEmbed = styled.iframe`
-  width: 100%; // Take the full width of the parent div
+  width: 100%;
   height: 70vh; // Set a height for the iframe
   border: none; // Remove iframe border
-  margin: 2vh 0; // Add top and bottom margin
+  margin: 2vh 0;
 `;
 
 const CompleteButton = styled.button`
-  width: 100%; // Take the full width of the parent div
+  width: 100%;
   height: 7vh;
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background-color: black; // Black background color
-  color: white; // Text color white
-  margin: 2vh 0; // Add top and bottom margin
+  background-color: black;
+  color: white;
+  margin: 2vh 0;
+
+  @media (max-width: 768px) {
+    width: auto; // Take the full width of the screen
+    padding: 1vh 5%; // Use percentage for responsive padding
+    font-size: 1.1rem;
+  }
 `;
 
 function FormPage() {
-  const googleFormUrl = 'https://forms.gle/7JJjUUUKruTkrfRu8';
+  const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdVfSgWPLI-N9wBj3MSJJDKv-qpx88KRliz3pjDu0HeE_JBrg/viewform';
+
+  // Function to handle the click on the button
+  const handleFormButtonClick = () => {
+    // Open the Google Form in a new tab
+    window.open(googleFormUrl, '_blank');
+  };
 
   return (
     <Positioner>
@@ -78,7 +103,7 @@ function FormPage() {
         </Description1>
         <GoogleFormEmbed src={googleFormUrl} />
         <Description2>위에 구글 설문지가 보이지 않는다면?</Description2>
-        <CompleteButton id="complete">
+        <CompleteButton onClick={handleFormButtonClick}>
           사전 신청 설문지 링크
         </CompleteButton>
       </MaxWidthWrapper>

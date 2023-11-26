@@ -15,6 +15,7 @@ const NavContainer = styled.nav`
 const Logo = styled.img`
   max-height: 50px;
   max-width: 100%; 
+  min-width: 75px;
   flex-shrink: 0;
 `;
 
@@ -42,6 +43,12 @@ const NavBarMenus = styled.ul`
 
 const NavBarMenusMenu = styled.li`
   padding: 0 10px;
+  white-space: nowrap; // Prevent text from wrapping
+  
+  @media (max-width: 768px) { // Adjust the breakpoint as needed
+    padding: 0 5px;
+    font-size: 0.8rem; // Smaller text on smaller screens
+  }
 `;
 
 const NavStyle = styled(NavLink)`
@@ -64,8 +71,15 @@ const SpecialButton = styled(NavLink)`
   border-radius: 5px; 
   text-decoration: none;
   margin-left: 10px; 
+  min-width: 75px;
+
   &:hover {
     background-color: #333;
+  }
+
+  @media (max-width: 768px) {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 `;
 

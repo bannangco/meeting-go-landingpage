@@ -8,6 +8,7 @@ const Positioner = styled.div`
   justify-content: space-between; // To push the content to the top and button to the bottom
   align-items: center; // Center content horizontally
   width: 100%;
+  min-width: 307px;
   background-color: #fdf6f7;
 `;
 
@@ -21,6 +22,11 @@ const MaxWidthWrapper = styled.div`
   margin: 0 auto; // This will center the div if the screen is larger than max-width
   background-color: #f8d7da;
   padding: 5vh 5vw; // Add some padding
+
+  @media (max-width: 768px) {
+    width: auto; // Take the full width of the screen
+    padding: 5vh 5%; // Use percentage for responsive padding
+  }
 `;
 
 
@@ -40,38 +46,38 @@ const Description1 = styled.p` // Use <p> for text, styled as h3
 `;
 
 const BtnStart = styled.button`
-width: 50%;
-padding: 2vh;
-border-radius: 5px;
-color: white;
-background-color : black;
-font-size: 1.2rem;
-text-align: center;
-margin: 5vh 0;
-&:hover {
-  cursor: pointer;
-  background-color: #333;
-}
+    width: 50%;
+    padding: 2vh;
+    border-radius: 5px;
+    color: white;
+    background-color : black;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 5vh 0;
+    &:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
 `
 
 const ContentWrap = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-margin: 5vh 0;
-align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0;
+    align-items: center;
 `
 const ContentImg = styled.img`
-flex:1;
-display: block;
+    flex:1;
+    display: block;
 `
 
 const ContentDiv = styled.div`
-flex:1;
-width: 100%;
-margin: 3vh 0;
-color: red;
-text-align:center;
+    flex:1;
+    width: 100%;
+    margin: 3vh 0;
+    color: red;
+    text-align:center;
 `
 
 
