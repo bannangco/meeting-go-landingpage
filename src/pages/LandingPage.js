@@ -3,75 +3,113 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 
 const Positioner = styled.div`
-    width: 100%;
-    /* overflow: hidden; */
-    height: 100vh; //화면 꽉차게
-    background-color: #FFE974;
-`;
-
-const LogoImage = styled.img`
-    top: 50%;
-    width: 60%;
-    transform: translateY(40%);
-    /* position: relative;
-    top: 50%;
-    transform: translateY(40%);
-    margin-bottom: 3%; */
-`;
-
-const ButtonContainer = styled.div`
-    width: 100%;
-    height: 40vh;
-    // margin-top: 30vh;
-`;
-
-const SignInButton = styled.button`
-    width: 80vw;
-    height: 7vh;
-    margin-top: 3vh;
-    font-weight: bold;
-    font-size: 1.8rem;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-`;
-
-const LogInButton = styled.button`
-    width: 80vw;
-    height: 7vh;
-    margin-top: 3vh;
-    font-weight: bold;
-    font-size: 1.8rem;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #454545;
-    color: white;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // To push the content to the top and button to the bottom
+  align-items: center; // Center content horizontally
+  width: 100%;
+  background-color: #fdf6f7;
 `;
 
 
-function FirstPage(props) {
+const MaxWidthWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; // Set the maximum width for large screens
+  margin: 0 auto; // This will center the div if the screen is larger than max-width
+  background-color: #f8d7da;
+  padding: 5vh 5vw; // Add some padding
+`;
+
+
+const Title = styled.h1`
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center; // Center the text
+  margin: 2vh 0; // Add top and bottom margin
+`;
+
+
+const Description1 = styled.p` // Use <p> for text, styled as h3
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center; // Center the text
+  margin: 2vh 0; // Add top and bottom margin
+`;
+
+const BtnStart = styled.button`
+width: 50%;
+padding: 2vh;
+border-radius: 5px;
+color: white;
+background-color : black;
+font-size: 1.2rem;
+text-align: center;
+margin: 5vh 0;
+&:hover {
+  background-color: #333;
+}
+`
+
+const ContentWrap = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+margin: 5vh 0;
+align-items: center;
+`
+const ContentImg = styled.img`
+flex:1;
+display: block;
+`
+
+const ContentDiv = styled.div`
+flex:1;
+width: 100%;
+margin: 3vh 0;
+color: red;
+text-align:center;
+`
+
+
+
+function LandingPage(props) {
 
     const buttonClicked = (e) =>{
         if (e.target.id === "signin"){
             window.location = `/form`;
         }
-        else{
-            window.location = `/form`;
+        else if (e.target.id === "Btn_start") {
+          window.location = `/form`;
+        } else {
+          window.location = `/`;
         }
-    }
-
+    };
     return (
         <Positioner>
-            {/* <LogoImage src="/logo_firstpage.png" /> */}
-            <ButtonContainer>
-                <SignInButton id="signin" onClick={buttonClicked}>회원가입</SignInButton>
-                <LogInButton id="login" onClick={buttonClicked}>로그인</LogInButton>
-            </ButtonContainer>
-        </Positioner>
+      <MaxWidthWrapper>
+        <Title>미팅은? 미팅GO!</Title>
+        <Description1>
+          상위권 대학에 재학중인 학생들의 미팅!<br/>아직은 개발중....<br/>현재 XX명의 대학생들이 사전 신청을 완료했습니다!
+        </Description1>
+        <BtnStart id = "Btn_start" onClick={buttonClicked}>지금 시작하기</BtnStart>
+        <ContentWrap>
+          <ContentImg src="\logo\logostransparent3.png"></ContentImg>
+          <ContentDiv>
+            확실한 신원 관리!
+          </ContentDiv>
+        </ContentWrap>
+        <ContentWrap>
+          <ContentImg src="\logo\logostransparent3.png"></ContentImg>
+          <ContentDiv>
+            5:5 성비
+          </ContentDiv>
+        </ContentWrap>
+      </MaxWidthWrapper>
+    </Positioner>
     );
 }
 
-export default FirstPage;
+export default LandingPage;
