@@ -42,6 +42,12 @@ const NavBarMenus = styled.ul`
 
 const NavBarMenusMenu = styled.li`
   padding: 0 10px;
+  white-space: nowrap; // Prevent text from wrapping
+  
+  @media (max-width: 768px) { // Adjust the breakpoint as needed
+    padding: 0 5px;
+    font-size: 0.8rem; // Smaller text on smaller screens
+  }
 `;
 
 const NavStyle = styled(NavLink)`
@@ -66,6 +72,10 @@ const SpecialButton = styled(NavLink)`
   margin-left: 10px; 
   &:hover {
     background-color: #333;
+  }
+  @media (max-width: 768px) {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 `;
 
