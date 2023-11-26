@@ -49,6 +49,7 @@ font-size: 1.2rem;
 text-align: center;
 margin: 5vh 0;
 &:hover {
+  cursor: pointer;
   background-color: #333;
 }
 `
