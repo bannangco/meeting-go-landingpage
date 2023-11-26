@@ -33,20 +33,19 @@ const NavBarLeft = styled.div`
 `;
 
 const NavBarRight = styled.div`
-  flex:3;
+  flex:2;
   display: flex;
   align-items: center;
 `;
 
-const NavBarMenus = styled.ul`
+const RightContent = styled.div`
+  flex : 1;
   display: flex;
-  list-style: none;
-  margin: 0;
-`;
-
-const NavBarMenusMenu = styled.li`
-  padding: 0 10px;
-`;
+  justify-content: center;
+  @media (max-width: 768px) {
+    margin: 20px 0px;
+  }
+`
 
 const NavStyle = styled(NavLink)`
   color: black;
@@ -74,10 +73,10 @@ const SpecialButton = styled(NavLink)`
 `;
 
 const Copyright1 = styled.div`
+flex:1;
 color: #fff;
-padding:20px;
-margin-left: auto;
-
+padding: 20px;
+text-align:right;
 @media (max-width: 768px) {
     display: none;
   }
@@ -100,9 +99,11 @@ function Footer() {
         </NavBarMenus> */}
       </NavBarLeft>
       <NavBarRight>
-        <SpecialButton to="/form">Mobile app</SpecialButton>
+        <RightContent>
+        <SpecialButton to="/form">Mobile</SpecialButton>
         <SpecialButton to="/form">Community</SpecialButton>
         <SpecialButton to="/form">Company</SpecialButton>
+        </RightContent>
         <Copyright1>&copy;Bannangco.Corp.2023<br></br> Garage to Space Station</Copyright1>
       </NavBarRight>
     </FooterContainer>
