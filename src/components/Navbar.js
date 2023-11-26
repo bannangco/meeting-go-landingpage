@@ -2,87 +2,63 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const NavContainer = styled.nav`
-  background-color: blue;
+  background-color: #fff; // Changed to white as per the image
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end; // Align items to the right
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 50px; // Set a fixed height for the navbar
+  padding: 0 20px; // Padding on the sides
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow as per the image
+  z-index: 10; // Ensure navbar is above other content
 `;
 
 const NavBarMenus = styled.ul`
   display: flex;
-  justify-content: space-between;
-  width: 75%;
+  justify-content: flex-end; // Align items to the right
   list-style: none;
   padding-left: 0px;
+  margin: 0; // Remove default margin
 `;
 
 const NavBarMenusMenu = styled.li`
-  color: #d6d6d6;
-  text-decoration: none;
+  padding: 0 10px; // Spacing between menu items
 `;
 
 const NavStyle = styled(NavLink)`
-  color: black;
-  &:link {
-    transition: 0.5s;
-    text-decoration: none;
-  }
+  color: black; // Text color as per the image
+  text-decoration: none;
   &:hover {
-    color: aquamarine;
+    color: #000; // Adjust the color for hover effect
+    text-decoration: none; // No underline on hover
   }
   &.active {
-    color: #ffe03a;
-    position: relative;
-    top: 2px;
-
-    background-color: aquamarine;
+    color: #000; // Active link color
+    font-weight: bold; // Make active link bold
   }
-`;
-
-const ImageSource = styled.img`
-  width: 75%;
-  top: auto;
 `;
 
 function NavBar() {
-  return (
-    <NavContainer>
-      <NavBarMenus>
-        <NavBarMenusMenu>
-          <NavStyle to="tournament">
-            <div>
-              {/* <ImageSource src="./tournament.png"></ImageSource> */}
-              <br></br>
-              대학 미팅 찾기
-            </div>
-          </NavStyle>
-        </NavBarMenusMenu>
-        <NavBarMenusMenu>
-          <NavStyle to="home">
-            <div>
-              {/* <ImageSource src="./navBarBee.png"></ImageSource> */}
-              <br></br>
-              동네 미팅 찾기
-            </div>
-          </NavStyle>
-        </NavBarMenusMenu>
-        <NavBarMenusMenu>
-          <NavStyle to="travels">
-            <div>
-              {/* <ImageSource src="./pencil.png"></ImageSource> */}
-              <br></br>
-              시작하기
-            </div>
-          </NavStyle>
-        </NavBarMenusMenu>
-      </NavBarMenus>
-    </NavContainer>
-  );
-}
+    return (
+      <NavContainer>
+        <NavBarMenus>
+          <NavBarMenusMenu>
+            <NavStyle to="/tournament">대학 미팅 찾기</NavStyle>
+          </NavBarMenusMenu>
+          <NavBarMenusMenu>
+            <NavStyle to="/home">동네 미팅 찾기</NavStyle>
+          </NavBarMenusMenu>
+          <NavBarMenusMenu>
+            <NavStyle to="/start">시작하기</NavStyle>
+          </NavBarMenusMenu>
+          <NavBarMenusMenu>
+            <NavStyle to="/help">Help</NavStyle>
+          </NavBarMenusMenu>
+          <NavBarMenusMenu>
+            <NavStyle to="/login">Login</NavStyle>
+          </NavBarMenusMenu>
+        </NavBarMenus>
+      </NavContainer>
+    );
+  }
 
 export default NavBar;

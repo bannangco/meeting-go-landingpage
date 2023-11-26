@@ -1,68 +1,89 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+
 
 const Positioner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // To push the content to the top and button to the bottom
+  align-items: center; // Center content horizontally
   width: 100%;
-  /* overflow: hidden; */
-  height: 100vh; //화면 꽉차게
-  background-color: red;
+  background-color: #fdf6f7;
 `;
 
-const Title = styled.div`
-  /* top: 10vh; */
-  margin-top: 5vh;
+
+const MaxWidthWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; // Set the maximum width for large screens
+  margin: 0 auto; // This will center the div if the screen is larger than max-width
+  background-color: #f8d7da;
+  padding: 5vh 5vw; // Add some padding
+`;
+
+
+const Title = styled.h1`
   font-weight: bold;
   font-size: 2rem;
+  text-align: center; // Center the text
+  margin: 2vh 0; // Add top and bottom margin
 `;
 
-const ButtonContainer = styled.div`
-  width: 100%;
-  height: 40vh;
-  padding-top: 2vh;
+const Description1 = styled.p` // Use <p> for text, styled as h3
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center; // Center the text
+  margin: 2vh 0; // Add top and bottom margin
+`;
+
+const Description2 = styled.p` // Use <p> for text, styled as h3
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center; // Center the text
+  margin: 2vh 0; // Add top and bottom margin
+`;
+
+// Styling for the iframe that will contain the Google Form
+const GoogleFormEmbed = styled.iframe`
+  width: 100%; // Take the full width of the parent div
+  height: 70vh; // Set a height for the iframe
+  border: none; // Remove iframe border
+  margin: 2vh 0; // Add top and bottom margin
 `;
 
 const CompleteButton = styled.button`
-  width: 80vw;
+  width: 100%; // Take the full width of the parent div
   height: 7vh;
-  margin-top: 3vh;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   cursor: pointer;
   border: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  background-color: #454545;
-  color: white;
+  background-color: black; // Black background color
+  color: white; // Text color white
+  margin: 2vh 0; // Add top and bottom margin
 `;
 
-const BackButton = styled.button`
-  width: 80vw;
-  height: 7vh;
-  margin-top: 3vh;
-  font-weight: bold;
-  font-size: 1.8rem;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
+function FormPage() {
+  const googleFormUrl = 'https://forms.gle/7JJjUUUKruTkrfRu8';
 
-function SigninPage() {
-  
   return (
     <Positioner>
-      <Title>사전 신청하기!</Title>
-      <ButtonContainer>
+      <MaxWidthWrapper>
+        <Title>사전 신청하기!</Title>
+        <Description1>
+          현재 개발자들이 열심히 서비스를 만들고 있습니다!<br/>미리 신청해서 5만원 상당의 혜택을 받으세요.<br/>현재 XX명의 대학생들이 사전 신청을 완료했습니다!
+        </Description1>
+        <GoogleFormEmbed src={googleFormUrl} />
+        <Description2>위에 구글 설문지가 보이지 않는다면?</Description2>
         <CompleteButton id="complete">
-          사전신청하기
+          사전 신청 설문지 링크
         </CompleteButton>
-        <BackButton id="back">
-          사전신청하기
-        </BackButton>
-      </ButtonContainer>
+      </MaxWidthWrapper>
     </Positioner>
   );
 }
 
-export default SigninPage;
+export default FormPage;

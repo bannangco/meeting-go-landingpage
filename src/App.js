@@ -8,13 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {console.log(window.location.pathname)}
-        {(window.location.pathname==="/"||window.location.pathname==="/form")?(<></>):(
-          <div>
-            HI
-            <Navbar />
-          </div>
-        )}
+        <Navbar />
         <Routes>
           <Route path="/" exact={true} element={<LandingPage />}></Route>
           <Route path="/form" exact={true} element={<FormPage />}></Route>
