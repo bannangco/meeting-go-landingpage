@@ -46,7 +46,7 @@ const Description1 = styled.p` // Use <p> for text, styled as h3
 `;
 
 const BtnStart = styled.button`
-    width: 50%;
+    width: 60%;
     padding: 2vh;
     border-radius: 5px;
     color: white;
