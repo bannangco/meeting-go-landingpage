@@ -9,7 +9,7 @@ const Positioner = styled.div`
   align-items: center; // Center content horizontally
   width: 100%;
   min-width: 307px;
-  background-color: #fdf6f7;
+  background-color: #fff4f4;
 `;
 
 
@@ -18,9 +18,9 @@ const MaxWidthWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 500px; // Set the maximum width for large screens
+  max-width: 501px; // Set the maximum width for large screens
   margin: 0 auto; // This will center the div if the screen is larger than max-width
-  background-color: #f8d7da;
+  background-color: #fff4f4;
   padding: 5vh 5vw; // Add some padding
 
   @media (max-width: 768px) {
@@ -29,14 +29,26 @@ const MaxWidthWrapper = styled.div`
   }
 `;
 
-
 const Title = styled.h1`
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center; // Center the text
-  margin: 2vh 0; // Add top and bottom margin
+  margin: 2vh 0 0 0; // Add top and bottom margin
 `;
 
+const Title2 = styled.h2`
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin: 5vh 0 1vh 0;
+`;
+
+const Title3 = styled.h3`
+  font-weight: bold;
+  font-size: 1.5rem;
+  // text-align: center;
+  // margin: 1vh 0;
+`;
 
 const Description1 = styled.p` // Use <p> for text, styled as h3
   font-weight: bold;
@@ -53,7 +65,7 @@ const BtnStart = styled.button`
     background-color : black;
     font-size: 1.2rem;
     text-align: center;
-    margin: 5vh 0;
+    margin: 3vh 0 2vh 0;
     &:hover {
         cursor: pointer;
         background-color: #333;
@@ -64,19 +76,26 @@ const ContentWrap = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 5vh 0;
+    margin: 3vh 0;
     align-items: center;
 `
-const ContentImg = styled.img`
+const ContentImg1 = styled.img`
     flex:1;
     display: block;
+    width: 100%;
+`
+
+const ContentImg2 = styled.img`
+    flex:1;
+    display: block;
+    width: 100%;
 `
 
 const ContentDiv = styled.div`
     flex:1;
     width: 100%;
-    margin: 3vh 0;
-    color: red;
+    // margin: 0.5vh 0 1vh 0;
+    // color: red;
     text-align:center;
 `
 
@@ -95,27 +114,47 @@ function LandingPage(props) {
         }
     };
     return (
-        <Positioner>
-      <MaxWidthWrapper>
-        <Title>미팅은? 미팅GO!</Title>
-        <Description1>
-          상위권 대학에 재학중인 학생들의 미팅!<br/>아직은 개발중....<br/>현재 XX명의 대학생들이 사전 신청을 완료했습니다!
-        </Description1>
-        <BtnStart id = "Btn_start" onClick={buttonClicked}>지금 시작하기</BtnStart>
-        <ContentWrap>
-          <ContentImg src="\logo\logostransparent3.png"></ContentImg>
-          <ContentDiv>
-            확실한 신원 관리!
-          </ContentDiv>
-        </ContentWrap>
-        <ContentWrap>
-          <ContentImg src="\logo\logostransparent3.png"></ContentImg>
-          <ContentDiv>
-            5:5 성비
-          </ContentDiv>
-        </ContentWrap>
-      </MaxWidthWrapper>
-    </Positioner>
+      <Positioner>
+        <MaxWidthWrapper>
+          <Title>미팅은? 미팅GO!</Title>
+          <ContentImg1 src="\img\landingpage1.png"></ContentImg1>
+          <Description1>
+            너무 부담스러운 소개팅에 질렸다면?<br/>
+            친구들과 편하게 놀고 오는 미팅 GO!<br/>
+            <br/>
+            편하게, 미팅GO!<br/>
+            <BtnStart id = "Btn_start" onClick={buttonClicked}>지금 시작하기</BtnStart>
+            <br/>
+            현재 XX명의 대학생들이 사전 신청을 완료했습니다!
+          </Description1>
+          
+          <Title2> 미팅GO의 차별점 </Title2>
+          <ContentWrap>
+            <ContentImg2 src="\img\landingpage2.png"></ContentImg2>
+            <Title3> 확실한 신원 관리 </Title3>
+            <ContentDiv>
+              대학생 사용자의 재학증명서 인증을 통해 확실한 신원을 확보하며, 3단계 인증을 통한 신원 관리
+            </ContentDiv>
+          </ContentWrap>
+
+          <ContentWrap>
+            <ContentImg2 src="\img\landingpage3.png"></ContentImg2>
+            <Title3> 미팅 팀 평가를 통한 실사용자 관리 </Title3>
+            <ContentDiv>
+              미팅 후 사용자 간의 리뷰를 통한 후기를 남길 수 있고, 본인의 프로필에 긍정 리뷰를 표시해 사용자들 간의 평가 지표를 제공
+            </ContentDiv>
+          </ContentWrap>
+
+          <ContentWrap>
+            <ContentImg2 src="\img\landingpage4.png"></ContentImg2>
+            <Title3> 편의성 극대화, 미팅 전과정 관리 </Title3>
+            <ContentDiv>
+              팀 생성, 매칭, 채팅/약삭, 미팅지원, 리뷰, 이벤트 등 앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스, 지도 및 캘린더 공유 서비스를 통한 미팅 편의성 향상
+            </ContentDiv>
+          </ContentWrap>
+          
+        </MaxWidthWrapper>
+      </Positioner>
     );
 }
 
