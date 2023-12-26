@@ -100,9 +100,9 @@ function Footer() {
       </NavBarLeft>
       <NavBarRight>
         <RightContent>
-        <SpecialButton to="/form">Mobile</SpecialButton>
-        <SpecialButton to="/form">Community</SpecialButton>
-        <SpecialButton to="/form">Company</SpecialButton>
+        <SpecialButton to="/form">Mobile App</SpecialButton>
+        {/* <SpecialButton to="/form">Community</SpecialButton>
+        <SpecialButton to="/form">Company</SpecialButton> */}
         </RightContent>
         <Copyright1>&copy;Bannangco.Corp.2023<br></br> Garage to Space Station</Copyright1>
       </NavBarRight>

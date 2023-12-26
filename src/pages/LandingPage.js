@@ -40,7 +40,7 @@ const Title2 = styled.h2`
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  margin: 5vh 0 1vh 0;
+  margin: 10vh 0 1vh 0;
 `;
 
 const Title3 = styled.h3`
@@ -56,6 +56,11 @@ const Description1 = styled.p` // Use <p> for text, styled as h3
   text-align: center; // Center the text
   margin: 2vh 0; // Add top and bottom margin
 `;
+
+const HighlightedText = styled.span`
+  font-size: 1.4rem;
+  // display: block;
+`
 
 const BtnStart = styled.button`
     width: 60%;
@@ -76,7 +81,7 @@ const ContentWrap = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 3vh 0;
+    margin: 3vh 0 10vh 0;
     align-items: center;
 `
 const ContentImg1 = styled.img`
@@ -122,10 +127,10 @@ function LandingPage(props) {
             너무 부담스러운 소개팅에 질렸다면?<br/>
             친구들과 편하게 놀고 오는 미팅 GO!<br/>
             <br/>
-            편하게, 미팅GO!<br/>
+            <HighlightedText>편하게, 미팅GO!</HighlightedText><br/>
             <BtnStart id = "Btn_start" onClick={buttonClicked}>지금 시작하기</BtnStart>
             <br/>
-            현재 XX명의 대학생들이 사전 신청을 완료했습니다!
+            현재 13명의 대학생들이 사전 신청을 완료했습니다!
           </Description1>
           
           <Title2> 미팅GO의 차별점 </Title2>
@@ -141,7 +146,7 @@ function LandingPage(props) {
             <ContentImg2 src="\img\landingpage3.png"></ContentImg2>
             <Title3> 미팅 팀 평가를 통한 실사용자 관리 </Title3>
             <ContentDiv>
-              미팅 후 사용자 간의 리뷰를 통한 후기를 남길 수 있고, 본인의 프로필에 긍정 리뷰를 표시해 사용자들 간의 평가 지표를 제공
+              미팅 후 상대 팀에 대한 리뷰를 남길 수 있고, 본인의 프로필에 선택된 리뷰를 표시해 우호도를 높일 수 있음
             </ContentDiv>
           </ContentWrap>
 
@@ -149,7 +154,7 @@ function LandingPage(props) {
             <ContentImg2 src="\img\landingpage4.png"></ContentImg2>
             <Title3> 편의성 극대화, 미팅 전과정 관리 </Title3>
             <ContentDiv>
-              팀 생성, 매칭, 채팅/약삭, 미팅지원, 리뷰, 이벤트 등 앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스, 지도 및 캘린더 공유 서비스를 통한 미팅 편의성 향상
+              팀 생성, 매칭, 채팅/약속, 미팅지원, 리뷰, 이벤트 등 앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스, 지도 및 캘린더 공유 서비스를 통한 미팅 편의성 향상
             </ContentDiv>
           </ContentWrap>
           

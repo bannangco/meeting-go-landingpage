@@ -9,7 +9,7 @@ const Positioner = styled.div`
   align-items: center; // Center content horizontally
   width: 100%;
   min-width: 307px;
-  background-color: #fdf6f7;
+  background-color: #fff4f4;
 `;
 
 
@@ -20,7 +20,7 @@ const MaxWidthWrapper = styled.div`
   width: 100%;
   max-width: 500px;
   margin: 0 auto; 
-  background-color: #f8d7da;
+  background-color: #fff4f4;
   padding: 5vh 5vw;
 
   @media (max-width: 768px) {
@@ -99,7 +99,10 @@ function FormPage() {
       <MaxWidthWrapper>
         <Title>사전 신청하기!</Title>
         <Description1>
-          현재 개발자들이 열심히 서비스를 만들고 있습니다!<br/>미리 신청해서 5만원 상당의 혜택을 받으세요.<br/>현재 XX명의 대학생들이 사전 신청을 완료했습니다!
+          베타테스트 오픈: 2024년 2월 1일 <br/>
+          정식서비스 런치: 2024년 3월 1일 <br/> 
+          <br/>
+          미리 신청한 사람들에게는... 5만원 상당의 혜택이..!
         </Description1>
         <GoogleFormEmbed src={googleFormUrl} />
         <Description2>위에 구글 설문지가 보이지 않는다면?</Description2>

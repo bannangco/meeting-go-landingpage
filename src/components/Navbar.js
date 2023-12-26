@@ -72,6 +72,7 @@ const SpecialButton = styled(NavLink)`
   text-decoration: none;
   margin-left: 10px; 
   min-width: 75px;
+  text-align: center;
 
   &:hover {
     background-color: #333;
