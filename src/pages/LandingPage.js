@@ -21,7 +21,7 @@ const MaxWidthWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 501px; // Set the maximum width for large screens
+  max-width: 508px; // Set the maximum width for large screens
   margin: 0 auto; // This will center the div if the screen is larger than max-width
   background-color: #fff4f4;
   padding: 5vh 5vw; // Add some padding
@@ -114,10 +114,10 @@ function LandingPage(props) {
     const buttonClicked = (e) =>{
         if (e.target.id === "signin"){
           logEvent(analytics, `test_firebase_analytics_signin`);
-          window.location = `/form`;
+          window.location = `/form/`;
         }
         else if (e.target.id === "Btn_start") {
-          window.location = `/form`;
+          window.location = `/form/`;
         } else {
           window.location = `/`;
         }
