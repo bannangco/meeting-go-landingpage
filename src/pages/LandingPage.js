@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 
+import { analytics } from "../firebase";
+import { logEvent } from "firebase/analytics";
+
 const Positioner = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,7 +113,8 @@ function LandingPage(props) {
 
     const buttonClicked = (e) =>{
         if (e.target.id === "signin"){
-            window.location = `/form`;
+          logEvent(analytics, `test_firebase_analytics_signin`);
+          window.location = `/form`;
         }
         else if (e.target.id === "Btn_start") {
           window.location = `/form`;
