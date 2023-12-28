@@ -12,6 +12,7 @@
 /build
 
 # misc
+.firebase/*
 .DS_Store
 .env.local
 .env.development.local
@@ -43,3 +44,6 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# firebase deployment generated files
+firebase-debug.log*
