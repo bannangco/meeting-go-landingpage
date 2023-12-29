@@ -87,17 +87,11 @@ const ContentWrap = styled.div`
     margin: 3vh 0 10vh 0;
     align-items: center;
 `
-const ContentImg1 = styled.img`
-    flex:1;
-    display: block;
-    width: 100%;
-`
-
-const ContentImg2 = styled.img`
-    flex:1;
-    display: block;
-    width: 100%;
-`
+const StyledImage = styled.img`
+  flex: 1;
+  display: block;
+  width: 100%;
+`;
 
 const ContentDiv = styled.div`
     flex:1;
@@ -107,10 +101,16 @@ const ContentDiv = styled.div`
     text-align:center;
 `
 
-
+// Functional component for rendering images with WebP and fallback
+const ImageWithFallback = ({ webpSrc, fallbackSrc, alt }) => (
+	<picture>
+		<source srcSet={webpSrc} type="image/webp" />
+		<source srcSet={fallbackSrc} type="image/png" />
+		<StyledImage src={fallbackSrc} alt={alt}/>
+	</picture>
+);
 
 function LandingPage(props) {
-
     const buttonClicked = (e) =>{
         if (e.target.id === "signin"){
           logEvent(analytics, `test_firebase_analytics_signin`);
@@ -126,7 +126,11 @@ function LandingPage(props) {
       <Positioner>
         <MaxWidthWrapper>
           <Title>미팅은? 미팅GO!</Title>
-          <ContentImg1 src="\img\landingpage1.png"></ContentImg1>
+          <ImageWithFallback
+            webpSrc="\img\landingpage1.webp"
+            fallbackSrc="\img\landingpage1.png"
+            alt="미팅을 하는 대학생 남녀의 일러스트"
+		      />
           <Description1>
             너무 부담스러운 소개팅에 질렸다면?<br/>
             친구들과 편하게 놀고 오는 미팅 GO!<br/>
@@ -139,7 +143,11 @@ function LandingPage(props) {
           
           <Title2> 미팅GO의 차별점 </Title2>
           <ContentWrap>
-            <ContentImg2 src="\img\landingpage2.png"></ContentImg2>
+            <ImageWithFallback
+              webpSrc="\img\landingpage2.webp"
+              fallbackSrc="\img\landingpage2.png"
+              alt="잘생기고 예쁜 남녀 대학생이 과잠을 입고 학교 앞에 서있는 일러스트"
+            />
             <Title3> 확실한 신원 관리 </Title3>
             <ContentDiv>
               대학생 사용자의 재학증명서 인증을 통해 확실한 신원을 확보하며, 3단계 인증을 통한 신원 관리
@@ -147,7 +155,11 @@ function LandingPage(props) {
           </ContentWrap>
 
           <ContentWrap>
-            <ContentImg2 src="\img\landingpage3.png"></ContentImg2>
+            <ImageWithFallback
+              webpSrc="\img\landingpage3.webp"
+              fallbackSrc="\img\landingpage3.png"
+              alt="미팅고 서비스 중 미팅 팀에 대한 리뷰를 남기는 페이지와 이를 둘러싼 대학생 이용자들 일러스트"
+            />
             <Title3> 미팅 팀 평가를 통한 실사용자 관리 </Title3>
             <ContentDiv>
               미팅 후 상대 팀에 대한 리뷰를 남길 수 있고, 본인의 프로필에 선택된 리뷰를 표시해 우호도를 높일 수 있음
@@ -155,7 +167,11 @@ function LandingPage(props) {
           </ContentWrap>
 
           <ContentWrap>
-            <ContentImg2 src="\img\landingpage4.png"></ContentImg2>
+            <ImageWithFallback
+              webpSrc="\img\landingpage4.webp"
+              fallbackSrc="\img\landingpage4.png"
+              alt="대학생 미팅의 전 과정을 관리하는 것을 보여주는 귀여운 일러스트"
+            />
             <Title3> 편의성 극대화, 미팅 전과정 관리 </Title3>
             <ContentDiv>
               팀 생성, 매칭, 채팅/약속, 미팅지원, 리뷰, 이벤트 등 앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스, 지도 및 캘린더 공유 서비스를 통한 미팅 편의성 향상

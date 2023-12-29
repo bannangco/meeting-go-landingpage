@@ -89,7 +89,7 @@ function NavBar() {
     <NavContainer>
       <NavBarLeft>
         <LogoLink to="/">
-            <Logo src="/logo/logostransparent1.png" alt="Logo" />
+            <Logo src="/logo/logostransparent1.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
         </LogoLink>
         {/* <NavBarMenus>
           <NavBarMenusMenu>

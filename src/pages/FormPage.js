@@ -104,7 +104,7 @@ function FormPage() {
           <br/>
           미리 신청한 사람들에게는... 5만원 상당의 혜택이..!
         </Description1>
-        <GoogleFormEmbed src={googleFormUrl} />
+        <GoogleFormEmbed src={googleFormUrl} alt="대학생 미팅 서비스 미팅고 앱을 사전신청 하는 구글 폼" />
         <Description2>위에 구글 설문지가 보이지 않는다면?</Description2>
         <CompleteButton onClick={handleFormButtonClick}>
           사전 신청 설문지 링크
