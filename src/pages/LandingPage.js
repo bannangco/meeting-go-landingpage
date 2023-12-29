@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { analytics } from "../firebase";
 import { logEvent } from "firebase/analytics";
+import { Helmet } from "react-helmet-async";
 
 const Positioner = styled.div`
   display: flex;
@@ -123,6 +124,12 @@ function LandingPage(props) {
         }
     };
     return (
+      <>
+      <Helmet>
+        <title>미팅GO - 대학생 미팅은? 미팅고!</title>
+        <meta name="description" content="가장 편리하고 안전한 대학생 미팅 잡기! 친구들과 미팅고에서 미팅 잡자!" />
+        <link rel="canonical" href="/" />
+      </Helmet>
       <Positioner>
         <MaxWidthWrapper>
           <Title>미팅은? 미팅GO!</Title>
@@ -180,6 +187,7 @@ function LandingPage(props) {
           
         </MaxWidthWrapper>
       </Positioner>
+      </>
     );
 }
 

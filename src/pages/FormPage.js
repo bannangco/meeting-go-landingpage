@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Helmet } from "react-helmet-async";
 
 const Positioner = styled.div`
   display: flex;
@@ -95,6 +95,12 @@ function FormPage() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>미팅GO - 사전신청하기</title>
+      <meta name="description" content="가장 편리하고 안전한 대학생 미팅 잡기 미팅GO! 사전신청하고 많은 혜택을 받으세요! 간단한 사전신청을 통해 서비스 오픈 후 5만원 상당의 혜택을 수 있습니다." />
+      <link rel="canonical" href="/form" />
+    </Helmet>
     <Positioner>
       <MaxWidthWrapper>
         <Title>사전 신청하기!</Title>
@@ -111,6 +117,7 @@ function FormPage() {
         </CompleteButton>
       </MaxWidthWrapper>
     </Positioner>
+    </>
   );
 }
 
