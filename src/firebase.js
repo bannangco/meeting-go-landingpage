@@ -10,10 +10,9 @@ import { getPerformance } from "firebase/performance";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "meetinggo-a4014.firebaseapp.com",
-  databaseURL: "https://meetinggo-a4014.firebaseio.com",
-  projectId: "meetinggo-a4014",
-  storageBucket: "meetinggo-a4014.appspot.com",
+  authDomain: "meetinggonew.firebaseapp.com",
+  projectId: "meetinggonew",
+  storageBucket: "meetinggonew.appspot.com",
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
