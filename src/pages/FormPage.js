@@ -105,8 +105,7 @@ function FormPage() {
       <MaxWidthWrapper>
         <Title>사전 신청하기!</Title>
         <Description1>
-          베타테스트 오픈: 2024년 2월 1일 <br/>
-          정식서비스 런치: 2024년 3월 1일 <br/> 
+          서비스 런치: 2024년 3월 3일 <br/> 
           <br/>
           미리 신청한 사람들에게는... 5만원 상당의 혜택이..!
         </Description1>

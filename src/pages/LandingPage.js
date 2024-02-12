@@ -145,7 +145,7 @@ function LandingPage(props) {
             <HighlightedText>편하게, 미팅GO!</HighlightedText><br/>
             <BtnStart id = "Btn_start" onClick={buttonClicked}>지금 시작하기</BtnStart>
             <br/>
-            현재 13명의 대학생들이 사전 신청을 완료했습니다!
+            현재 14명의 대학생들이 사전 신청을 완료했습니다!
           </Description1>
           
           <Title2> 미팅GO의 차별점 </Title2>
