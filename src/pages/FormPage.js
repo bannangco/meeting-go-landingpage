@@ -105,7 +105,7 @@ function FormPage() {
       <MaxWidthWrapper>
         <Title>사전 신청하기!</Title>
         <Description1>
-          서비스 런치: 2024년 3월 3일 <br/> 
+          서비스 런치: 2024년 4월 3일 <br/> 
           <br/>
           미리 신청한 사람들에게는... 5만원 상당의 혜택이..!
         </Description1>
