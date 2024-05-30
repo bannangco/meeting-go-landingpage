@@ -1,3 +1,6 @@
+
+![meetinggo_og_image](https://github.com/bannangco/meeting-go-landingpage/assets/16937724/595f36c9-3bf5-4f94-b888-9089f417c841)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
