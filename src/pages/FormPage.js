@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from "react-helmet-async";
+import { analytics } from "../firebase";
+import { logEvent } from "firebase/analytics";
 
 const Positioner = styled.div`
   display: flex;
@@ -98,8 +100,9 @@ const ImageWrapper = styled.div`
 const FormPage = () => {
   const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdVfSgWPLI-N9wBj3MSJJDKv-qpx88KRliz3pjDu0HeE_JBrg/viewform';
 
-  const buttonClicked = (e) => {
-    if (e.target.id === "Btn_form") {
+  const handleButtonClick = (event, eventName) => {
+    logEvent(analytics, eventName);
+    if (event.target.id === "Btn_form") {
       window.open(googleFormUrl, '_blank');
     } else {
       window.location = `/`;
@@ -126,7 +129,7 @@ const FormPage = () => {
           <Description>
             아래 페이지에서 서비스를 사전 신청한 후 5만 원 상당의 혜택을 누려보세요
           </Description>
-          <GoogleFormEmbed src={googleFormUrl} title="Google Form" />
+          <GoogleFormEmbed src={googleFormUrl} title="Google Form" onLoad={() => logEvent(analytics, 'form_google_form_load')} />
           <ImageWrapper margin="6vh 0 0 0" width="154px">
             <ImageWithFallback
               webpSrc="\img\cry_emoji.webp"
@@ -137,7 +140,7 @@ const FormPage = () => {
           <Description weight="300" size="24px" margin="2vh 0 4vh 0">
             위의 구글 설문지가 잘 보이지 않는다면?
           </Description>
-          <Button id="Btn_form" onClick={buttonClicked}>
+          <Button id="Btn_form" onClick={(e) => handleButtonClick(e, 'form_click_google_form')}>
             구글 폼 연결
             <ImageWithFallback
               webpSrc="\img\arrow_icon.webp"

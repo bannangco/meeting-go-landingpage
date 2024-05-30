@@ -116,6 +116,7 @@ const StyledButton = styled.button`
   @media (max-width: 768px) {
     width: 100%;
     font-size: 18px;
+    margin: 5px 0 20px 0;
   }
 `;
 
@@ -198,13 +199,18 @@ const InfoText = styled.p`
 `;
 
 const LandingPage = () => {
-  const handleButtonClick = (e) => {
-    if (e.target.id === "Btn_start") {
-      logEvent(analytics, `test_firebase_analytics_signin`);
+  const handleButtonClick = (event, eventName) => {
+    logEvent(analytics, eventName);
+    if (event.target.id === "Btn_start") {
       window.location = `/form/`;
     } else {
       window.location = `/`;
     }
+  };
+
+  const handleInstagramClick = () => {
+    logEvent(analytics, 'click_instagram');
+    window.open('https://www.instagram.com/meetinggo_official/', '_blank');
   };
 
   return (
@@ -229,7 +235,7 @@ const LandingPage = () => {
             <FlexButtonContainer>
               <div>
                 <SmallText>지금 바로 미팅고 시작하기</SmallText>
-                <StyledButton id="Btn_start" onClick={handleButtonClick}>
+                <StyledButton id="Btn_start" onClick={(e) => handleButtonClick(e, 'click_start_now')}>
                   지금 시작하기
                   <ImageWithFallback
                     webpSrc="\img\arrow_icon.webp"
@@ -240,7 +246,7 @@ const LandingPage = () => {
               </div>
               <div>
                 <SmallText>미팅고의 소식이 궁금하다면</SmallText>
-                <StyledButton bgColor="#5f5f5f" hoverColor="#424242" onClick={() => window.open('https://www.instagram.com/meetinggo_official/', '_blank')}>
+                <StyledButton bgColor="#5f5f5f" hoverColor="#424242" onClick={handleInstagramClick}>
                   인스타그램
                   <ImageWithFallback
                     webpSrc="\img\instagram_icon.webp"
@@ -325,9 +331,9 @@ const LandingPage = () => {
             />
           </ImageWrapper>
           <DescriptionText weight="300" size="24px" mobileSize="20px">
-            지금 바로 미팅GO와 함께<br />행복한 대학생활을 즐겨 보세요😄
+            지금 바로 미팅GO와 함께<br />행복한 대학생활을 즐겨 보세요😄<br/><br/>
           </DescriptionText>
-          <StyledButton id="Btn_start" onClick={handleButtonClick}>
+          <StyledButton id="Btn_start" onClick={(e) => handleButtonClick(e, 'click_start_now_bottom')}>
             지금 시작하기
             <ImageWithFallback
               webpSrc="\img\arrow_icon.webp"

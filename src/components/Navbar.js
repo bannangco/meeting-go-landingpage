@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { analytics } from "../firebase";
+import { logEvent } from "firebase/analytics";
 
 const NavContainer = styled.nav`
   background-color: #fff;
@@ -8,7 +10,6 @@ const NavContainer = styled.nav`
   align-items: center;
   height: 70px;
   padding: 10px 30px 10px 20px;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
   
   @media (max-width: 768px) {
@@ -25,10 +26,9 @@ const Logo = styled.img`
 `;
 
 const LogoLink = styled(NavLink)`
-  display: flex; // Keep the logo aligned properly
-  align-items: center; // Center the logo vertically
+  display: flex;
+  align-items: center;
 `;
-
 
 const NavBarLeft = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const NavBarMenus = styled.ul`
 
 const NavBarMenusMenu = styled.li`
   padding: 0 10px;
-  white-space: nowrap; // Prevent text from wrapping
+  white-space: nowrap;
 `;
 
 const NavStyle = styled(NavLink)`
@@ -60,7 +60,6 @@ const NavStyle = styled(NavLink)`
   }
   &.active {
     color: #9C41FF;
-    // font-weight: 500;
   }
 `;
 
@@ -84,13 +83,19 @@ const SpecialButton = styled(NavLink)`
   }
 `;
 
-function NavBar() {
+const NavBar = () => {
+  const handleNavClick = (event, eventName) => {
+    logEvent(analytics, eventName);
+  };
+
   return (
     <NavContainer>
       <NavBarLeft>
-        <LogoLink to="/">
-            <Logo src="/logo/logo.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
+        <LogoLink to="/" onClick={(e) => handleNavClick(e, 'nav_click_logo')}>
+          <Logo src="/logo/logo.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
         </LogoLink>
+      </NavBarLeft>
+      <NavBarRight>
         {/* <NavBarMenus>
           <NavBarMenusMenu>
             <NavStyle to="/form">대학 미팅 찾기</NavStyle>
@@ -99,20 +104,21 @@ function NavBar() {
             <NavStyle to="/form">동네 미팅 찾기</NavStyle>
           </NavBarMenusMenu>
         </NavBarMenus> */}
-      </NavBarLeft>
-      <NavBarRight>
         <NavBarMenus>
           <NavBarMenusMenu>
-            <NavStyle to="/">Home</NavStyle>
+            <NavStyle to="/" onClick={(e) => handleNavClick(e, 'nav_click_home')}>
+              Home
+            </NavStyle>
           </NavBarMenusMenu>
           <NavBarMenusMenu>
-            <NavStyle to="/form">사전 예약</NavStyle>
+            <NavStyle to="/form" onClick={(e) => handleNavClick(e, 'nav_click_preregister')}>
+              사전 예약
+            </NavStyle>
           </NavBarMenusMenu>
         </NavBarMenus>
-        {/* <SpecialButton to="/form">사전예약</SpecialButton> */}
       </NavBarRight>
     </NavContainer>
   );
-}
+};
 
 export default NavBar;
