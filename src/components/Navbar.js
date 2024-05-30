@@ -10,6 +10,11 @@ const NavContainer = styled.nav`
   padding: 10px 30px 10px 20px;
   // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  
+  @media (max-width: 768px) {
+    font-weight: 300;
+    font-size: 14px;
+  }
 `;
 
 const Logo = styled.img`
@@ -44,11 +49,6 @@ const NavBarMenus = styled.ul`
 const NavBarMenusMenu = styled.li`
   padding: 0 10px;
   white-space: nowrap; // Prevent text from wrapping
-  
-  @media (max-width: 768px) { // Adjust the breakpoint as needed
-    padding: 0 5px;
-    font-size: 0.8rem; // Smaller text on smaller screens
-  }
 `;
 
 const NavStyle = styled(NavLink)`
@@ -60,7 +60,7 @@ const NavStyle = styled(NavLink)`
   }
   &.active {
     color: #9C41FF;
-    font-weight: bold;
+    // font-weight: 500;
   }
 `;
 
@@ -105,11 +105,11 @@ function NavBar() {
           <NavBarMenusMenu>
             <NavStyle to="/">Home</NavStyle>
           </NavBarMenusMenu>
-          {/* <NavBarMenusMenu>
-            <NavStyle to="/form">Login</NavStyle>
-          </NavBarMenusMenu> */}
+          <NavBarMenusMenu>
+            <NavStyle to="/form">사전 예약</NavStyle>
+          </NavBarMenusMenu>
         </NavBarMenus>
-        <SpecialButton to="/form">사전예약</SpecialButton>
+        {/* <SpecialButton to="/form">사전예약</SpecialButton> */}
       </NavBarRight>
     </NavContainer>
   );
