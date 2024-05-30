@@ -4,7 +4,7 @@ import { analytics } from "../firebase";
 import { logEvent } from "firebase/analytics";
 import { Helmet } from "react-helmet-async";
 
-const Positioner = styled.div`
+const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,7 +13,7 @@ const Positioner = styled.div`
   min-width: 307px;
 `;
 
-const MaxWidthWrapper = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@ const MaxWidthWrapper = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const HeaderTitle = styled.h1`
   font-weight: bold;
   font-size: 2.5rem;
   text-align: center;
@@ -38,7 +38,7 @@ const Title = styled.h1`
   }
 `;
 
-const Title2 = styled.h2`
+const SectionTitle = styled.h2`
   font-weight: 500;
   font-size: 48px;
   text-align: center;
@@ -49,27 +49,28 @@ const Title2 = styled.h2`
   }
 `;
 
-const TitleNew = styled.h3`
+const SubSectionTitle = styled.h3`
   font-weight: 400;
   font-size: 32px;
-  margin: 0 0 10px 0;
+  margin: 0 0 0 0;
 
   @media (max-width: 768px) {
     font-size: 24px;
   }
 `;
 
-const DescriptionNew = styled.p`
-  font-weight: 100;
-  font-size: 14px;
+const DescriptionText = styled.p`
+  font-weight: ${({ weight }) => weight || 100};
+  font-size: ${({ size }) => size || '14px'};
   margin: 14px 0 5px;
+  text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: ${({ mobileSize }) => mobileSize || '12px'};
   }
 `;
 
-const Description1 = styled.div`
+const CenteredDescription = styled.div`
   font-weight: 200;
   font-size: 20px;
   text-align: center;
@@ -81,30 +82,7 @@ const Description1 = styled.div`
   }
 `;
 
-const Description2 = styled.p`
-  font-weight: 200;
-  font-size: 15px;
-  text-align: center;
-  margin: 0 0 5vh 0;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-const Description3 = styled.p`
-  font-weight: 300;
-  font-size: 24px;
-  text-align: center;
-  margin: 1vh 0 2vh 0;
-  line-height: 1.5;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-  }
-`;
-
-const ButtonContainer = styled.div`
+const FlexButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -116,11 +94,12 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const BtnStart = styled.button`
+const StyledButton = styled.button`
   width: 190px;
   padding: 20px 5px;
+  margin: 15px 0 20px 0;
   color: white;
-  background-color: #9C41FF;
+  background-color: ${({ bgColor }) => bgColor || '#9C41FF'};
   border: 0;
   font-weight: 200;
   font-size: 20px;
@@ -131,7 +110,7 @@ const BtnStart = styled.button`
   gap: 10px;
   &:hover {
     cursor: pointer;
-    background-color: #6d2db2;
+    background-color: ${({ hoverColor }) => hoverColor || '#6d2db2'};
   }
 
   @media (max-width: 768px) {
@@ -140,74 +119,20 @@ const BtnStart = styled.button`
   }
 `;
 
-const BtnInstagram = styled.button`
-  width: 190px;
-  padding: 20px 5px;
-  color: white;
-  background-color: #5f5f5f;
-  border: 0;
-  font-weight: 200;
-  font-size: 20px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  &:hover {
-    cursor: pointer;
-    background-color: #424242;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    font-size: 18px;
-  }
-`;
-
-const ContentWrap = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 3vh 0 10vh 0;
-  align-items: center;
-`;
-
-const StyledImage = styled.img`
-  flex: 1;
-  display: block;
-  width: 100%;
-`;
-
-const ContentDiv = styled.div`
-  flex: 1;
-  width: 100%;
-  text-align: center;
-`;
-
-const Section = styled.div`
-  display: flex;
-  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  height: 364px;
-  padding: 0 20px;
-  border-bottom: 2px solid #eaeaea;
-  gap: 20px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-    margin: 0 0 20px 0;
-    text-align: center;
-  }
-`;
+const ImageWithFallback = ({ webpSrc, fallbackSrc, alt }) => (
+  <picture>
+    <source srcSet={webpSrc} type="image/webp" />
+    <source srcSet={fallbackSrc} type="image/png" />
+    <img src={fallbackSrc} alt={alt} style={{ flex: 1, display: 'block', width: '100%' }} />
+  </picture>
+);
 
 const ImageWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: ${({ alignItems }) => alignItems || 'flex-end'};
+  margin: ${({ margin }) => margin || '0'};
 
   img {
     width: 100%;
@@ -225,80 +150,57 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ImageWrapper2 = styled.div`
-  flex: 1;
+const Section = styled.div`
   display: flex;
+  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
+  align-items: flex-end;
   justify-content: center;
-  margin: 8vh 0 2vh 0;
-  width: 138px;
+  width: 100%;
+  height: 364px;
+  padding: 0 20px;
+  border-bottom: 2px solid #eaeaea;
+  gap: 20px;
+  margin-bottom: 30px;
 
   @media (max-width: 768px) {
-    width: 100px;
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0 0 0;
+    text-align: center;
   }
 `;
 
-const ImageWrapper3 = styled.div`
+const TextContainer = styled.div`
   flex: 1;
-  display: flex;
-  justify-content: center;
-  margin: 2vh 0 0 0;
-  width: 80%;
-`;
-
-const ImageWrapper4 = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  margin: 6vh 0 0 0;
-
-  img {
-    width: 154px;
-
-    @media (max-width: 768px) {
-      width: 100px;
-    }
-  }
-`;
-
-const TextWrapper = styled.div`
-  flex: 1;
-  padding: 20px 0 0 0;
+  padding: 20px 0 20px 0;
   display: flex;
   flex-direction: column;
-  align-items: ${({ reverse }) => (reverse ? 'flex-end' : 'flex-start')};
+  text-align: center;
 
   @media (max-width: 768px) {
-    align-items: center;
     margin: auto;
+    align-items: center;
+  padding: 20px 0 0 0;
+
   }
 `;
 
-const SmallTextWrapper = styled.div`
+const SmallText = styled.div`
   font-weight: 200;
   margin: 0 0 2px 0;
   font-size: 12px;
   text-align: center;
 `;
 
-const TextWrapper2 = styled.p`
+const InfoText = styled.p`
   font-weight: 200;
   font-size: 16px;
 `;
 
-const ImageWithFallback = ({ webpSrc, fallbackSrc, alt }) => (
-  <picture>
-    <source srcSet={webpSrc} type="image/webp" />
-    <source srcSet={fallbackSrc} type="image/png" />
-    <StyledImage src={fallbackSrc} alt={alt} />
-  </picture>
-);
-
 const LandingPage = () => {
-  const buttonClicked = (e) => {
-    if (e.target.id === "signin") {
+  const handleButtonClick = (e) => {
+    if (e.target.id === "Btn_start") {
       logEvent(analytics, `test_firebase_analytics_signin`);
-      window.location = `/form/`;
-    } else if (e.target.id === "Btn_start") {
       window.location = `/form/`;
     } else {
       window.location = `/`;
@@ -312,95 +214,129 @@ const LandingPage = () => {
         <meta name="description" content="가장 편리하고 안전한 대학생 미팅 잡기! 친구들과 미팅고에서 미팅 잡자!" />
         <link rel="canonical" href="/" />
       </Helmet>
-      <Positioner>
-        <MaxWidthWrapper>
-          <ImageWrapper3>
+      <PageContainer>
+        <ContentWrapper>
+          <ImageWrapper margin="2vh 0 0 0" width="80%">
             <ImageWithFallback
               webpSrc="\img\new_landingp_1.webp"
               fallbackSrc="\img\new_landingp_1.png"
               alt="청춘으로 추억을 만들자, 미팅은? 미팅고 라고 적힌 미팅GO 대표 이미지"
             />
-          </ImageWrapper3>
-          <Description1>
+          </ImageWrapper>
+          <CenteredDescription>
             너무 부담스러운 소개팅에 질렸다면?<br />
             친구들과 편하게 놀고 오는 미팅 GO!<br />
-            <ButtonContainer>
+            <FlexButtonContainer>
               <div>
-                <SmallTextWrapper>지금 바로 미팅고 시작하기</SmallTextWrapper>
-                <BtnStart id="Btn_start" onClick={buttonClicked}>
+                <SmallText>지금 바로 미팅고 시작하기</SmallText>
+                <StyledButton id="Btn_start" onClick={handleButtonClick}>
                   지금 시작하기
-                  <img src="\img\arrow_icon.png" alt="arrow icon" width="23" height="19" />
-                </BtnStart>
+                  <ImageWithFallback
+                    webpSrc="\img\arrow_icon.webp"
+                    fallbackSrc="\img\arrow_icon.png"
+                    alt="arrow icon"
+                  />
+                </StyledButton>
               </div>
               <div>
-                <SmallTextWrapper>미팅고의 소식이 궁금하다면</SmallTextWrapper>
-                <BtnInstagram id="Btn_instagram" onClick={() => window.open('https://www.instagram.com/meetinggo_official/', '_blank')}>
+                <SmallText>미팅고의 소식이 궁금하다면</SmallText>
+                <StyledButton bgColor="#5f5f5f" hoverColor="#424242" onClick={() => window.open('https://www.instagram.com/meetinggo_official/', '_blank')}>
                   인스타그램
-                  <img src="\img\instagram_icon.png" alt="Instagram icon" width="24" height="24" />
-                </BtnInstagram>
+                  <ImageWithFallback
+                    webpSrc="\img\instagram_icon.webp"
+                    fallbackSrc="\img\instagram_icon.png"
+                    alt="Instagram icon"
+                  />
+                </StyledButton>
               </div>
-            </ButtonContainer>
-            <TextWrapper2>
-              현재 24명의 대학생들이 사전 신청을 완료했어요 😄
-            </TextWrapper2>
-          </Description1>
+            </FlexButtonContainer>
+            <InfoText>
+              현재 64명의 대학생들이 사전 신청을 완료했어요 😄
+            </InfoText>
+          </CenteredDescription>
 
-          <ImageWrapper2>
-            <img src="\img\star.png" alt="Star Image" />
-          </ImageWrapper2>
-          <Title2> 미팅GO는 달라요 </Title2>
-          <Description2>
+          <ImageWrapper alignItems="center" margin="8vh 0 2vh 0" width="138px">
+            <ImageWithFallback
+              webpSrc="\img\star.webp"
+              fallbackSrc="\img\star.png"
+              alt="Star Image"
+            />
+          </ImageWrapper>
+          <SectionTitle> 미팅GO는 달라요 </SectionTitle>
+          <DescriptionText weight="200" size="15px" mobileSize="14px">
             미팅GO만의 차별점을 아래에서 확인해보세요 🤗
-          </Description2>
+          </DescriptionText>
 
           <Section>
-            <TextWrapper>
-              <TitleNew>확실한 신원 관리</TitleNew>
-              <DescriptionNew>
-                대학생 사용자의 재학증명서 인증을 통해 확실한 신원을 확보하며, 3단계 인증을 통한 신원 관리
-              </DescriptionNew>
-            </TextWrapper>
+            <TextContainer>
+              <SubSectionTitle>확실한 신원 관리</SubSectionTitle>
+              <DescriptionText>
+                대학생 사용자의 재학증명서 인증을 통해 확실한 신원을 확보하며, <br/> 3단계 인증을 통해 엄격하게 신원을 관리합니다.
+              </DescriptionText>
+            </TextContainer>
             <ImageWrapper>
-              <img src="\img\new_landingp_2.png" alt="Image 1 Description" />
+              <ImageWithFallback
+                webpSrc="\img\new_landingp_2.webp"
+                fallbackSrc="\img\new_landingp_2.png"
+                alt="Image 1 Description"
+              />
             </ImageWrapper>
           </Section>
 
           <Section reverse>
-            <TextWrapper reverse>
-              <TitleNew>미팅 팀 평가를 통한 실사용자 관리</TitleNew>
-              <DescriptionNew>
-                미팅 후 상대 팀에 대한 리뷰를 남길 수 있고, 본인의 프로필에 선택된 리뷰를 표시해 우호도를 높일 수 있음
-              </DescriptionNew>
-            </TextWrapper>
+            <TextContainer alignItems="flex-end" textAlign="right">
+              <SubSectionTitle>미팅 팀 평가를 통한 실사용자 관리</SubSectionTitle>
+              <DescriptionText>
+                미팅 후 상대 팀에 대한 리뷰를 남길 수 있고, <br/> 본인의 프로필에 선택된 리뷰를 표시해 우호도를 높일 수 있습니다.
+              </DescriptionText>
+            </TextContainer>
             <ImageWrapper>
-              <img src="\img\new_landingp_3.png" alt="Image 2 DescriptionNew" />
+              <ImageWithFallback
+                webpSrc="\img\new_landingp_3.webp"
+                fallbackSrc="\img\new_landingp_3.png"
+                alt="Image 2 Description"
+              />
             </ImageWrapper>
           </Section>
 
           <Section>
-            <TextWrapper>
-              <TitleNew>편의성 극대화, 미팅 전과정 관리</TitleNew>
-              <DescriptionNew>
-                팀 생성, 매칭, 채팅/약속, 미팅지원, 리뷰, 이벤트 등 앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스, 지도 및 캘린더 공유 서비스를 통한 미팅 편의성 향상
-              </DescriptionNew>
-            </TextWrapper>
+            <TextContainer>
+              <SubSectionTitle>편의성 극대화, 미팅 전과정 관리</SubSectionTitle>
+              <DescriptionText>
+                팀 생성, 매칭, 채팅/약속, 미팅지원, 리뷰, 이벤트 등 <br/> 
+                앱 내에서 미팅의 시작부터 후까지 관리하는 all-in-one 서비스입니다. <br/>
+                지도 및 캘린더 공유 서비스를 통하여 미팅의 편의성을 향상합니다.
+              </DescriptionText>
+            </TextContainer>
             <ImageWrapper>
-              <img src="\img\new_landingp_4.png" alt="Image 3 DescriptionNew" />
+              <ImageWithFallback
+                webpSrc="\img\new_landingp_4.webp"
+                fallbackSrc="\img\new_landingp_4.png"
+                alt="Image 3 Description"
+              />
             </ImageWrapper>
           </Section>
 
-          <ImageWrapper4>
-            <img src="\img\kiss_emoji.png" alt="Kiss Emoji Image" />
-          </ImageWrapper4>
-          <Description3>
+          <ImageWrapper margin="6vh 0 0 0" width="154px">
+            <ImageWithFallback
+              webpSrc="\img\kiss_emoji.webp"
+              fallbackSrc="\img\kiss_emoji.png"
+              alt="Kiss Emoji Image"
+            />
+          </ImageWrapper>
+          <DescriptionText weight="300" size="24px" mobileSize="20px">
             지금 바로 미팅GO와 함께<br />행복한 대학생활을 즐겨 보세요😄
-          </Description3>
-          <BtnStart id="Btn_start" onClick={buttonClicked}>
+          </DescriptionText>
+          <StyledButton id="Btn_start" onClick={handleButtonClick}>
             지금 시작하기
-            <img src="\img\arrow_icon.png" alt="arrow icon" width="23" height="19" />
-          </BtnStart>
-        </MaxWidthWrapper>
-      </Positioner>
+            <ImageWithFallback
+              webpSrc="\img\arrow_icon.webp"
+              fallbackSrc="\img\arrow_icon.png"
+              alt="arrow icon"
+            />
+          </StyledButton>
+        </ContentWrapper>
+      </PageContainer>
     </>
   );
 };
