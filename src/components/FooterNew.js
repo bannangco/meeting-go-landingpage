@@ -50,7 +50,7 @@ function Footer() {
     <FooterContainer>
       <LogoText>Meeting Go</LogoText>
       <Line />
-      <CenterText>Garage to Space Station</CenterText>
+      <CenterText>Innovating Culture with Code</CenterText>
       <Line />
       <Copyright>&copy; Bannangco 2024</Copyright>
     </FooterContainer>
