@@ -6,16 +6,26 @@ import { HelmetProvider } from "react-helmet-async";
 import { hydrate, render } from 'react-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-if (rootElement.hasChildNodes()) {
-  hydrate(
+// root.render(
+//   <React.StrictMode>
+//     <HelmetProvider>
+//       <App />
+//     </HelmetProvider>
+//   </React.StrictMode>
+// );
+
+const container = document.getElementById('root');
+if (container.hasChildNodes()) {
+  ReactDOM.hydrateRoot(
+    container,
     <React.StrictMode>
       <HelmetProvider>
         <App />
       </HelmetProvider>
     </React.StrictMode>
-  );
+  )
 } else {
-  render(
+  root.render(
     <React.StrictMode>
       <HelmetProvider>
         <App />
