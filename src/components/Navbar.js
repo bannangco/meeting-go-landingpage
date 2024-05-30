@@ -6,9 +6,9 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 70px;
+  padding: 10px 30px 10px 20px;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
 `;
 
@@ -52,14 +52,14 @@ const NavBarMenusMenu = styled.li`
 `;
 
 const NavStyle = styled(NavLink)`
-  color: black;
+  color: #000;
   text-decoration: none;
   &:hover {
-    color: #000;
+    color: #9C41FF;
     text-decoration: none;
   }
   &.active {
-    color: #000;
+    color: #9C41FF;
     font-weight: bold;
   }
 `;
@@ -67,7 +67,7 @@ const NavStyle = styled(NavLink)`
 const SpecialButton = styled(NavLink)`
   background-color: black;
   color: white;
-  padding: 10px 15px;
+  padding: 7px 15px;
   border-radius: 5px; 
   text-decoration: none;
   margin-left: 10px; 
@@ -89,7 +89,7 @@ function NavBar() {
     <NavContainer>
       <NavBarLeft>
         <LogoLink to="/">
-            <Logo src="/logo/logostransparent1.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
+            <Logo src="/logo/logo.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
         </LogoLink>
         {/* <NavBarMenus>
           <NavBarMenusMenu>
@@ -105,11 +105,11 @@ function NavBar() {
           <NavBarMenusMenu>
             <NavStyle to="/">Home</NavStyle>
           </NavBarMenusMenu>
-          <NavBarMenusMenu>
+          {/* <NavBarMenusMenu>
             <NavStyle to="/form">Login</NavStyle>
-          </NavBarMenusMenu>
+          </NavBarMenusMenu> */}
         </NavBarMenus>
-        <SpecialButton to="/form">시작하기</SpecialButton>
+        <SpecialButton to="/form">사전예약</SpecialButton>
       </NavBarRight>
     </NavContainer>
   );
