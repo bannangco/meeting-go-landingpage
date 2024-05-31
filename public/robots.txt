@@ -1,3 +1,4 @@
+Sitemap: https://meetinggo.kr/sitemap1.xml
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
