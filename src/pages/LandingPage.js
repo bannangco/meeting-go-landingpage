@@ -227,11 +227,11 @@ const LandingPage = () => {
         <meta property='og:locale:alternate' content='en_US' />
         <meta property='og:title'      content='미팅GO - 대학생 미팅은? 미팅고!' />
         <meta property="og:description" content="가장 편리하고 안전한 대학생 미팅 잡기! 친구들과 미팅고에서 미팅 잡자!" />
-        <meta property='og:image'      content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
+        <meta property='og:image'      content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
         <meta name="twitter:title" content="미팅GO - 대학생 미팅은? 미팅고!" />
         <meta name="twitter:description" content="가장 편리하고 안전한 대학생 미팅 잡기! 친구들과 미팅고에서 미팅 잡자!" />
-        <meta name="twitter:image" content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
-        <meta name="twitter:card" content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
+        <meta name="twitter:image" content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
+        <meta name="twitter:card" content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
         <link rel="canonical" href="/" />
 
       </Helmet>

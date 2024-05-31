@@ -123,11 +123,11 @@ const FormPage = () => {
         <meta property='og:locale'     content='ko_KR' />
         <meta property='og:locale:alternate' content='en_US' />
         <meta property='og:title'      content='미팅GO - 사전신청하기' />
-        <meta property='og:image'      content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
+        <meta property='og:image'      content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
         <meta name="twitter:title" content="미팅GO - 사전신청하기" />
         <meta name="twitter:description" content="가장 편리하고 안전한 대학생 미팅 잡기 미팅GO! 사전신청하고 많은 혜택을 받으세요! 간단한 사전신청을 통해 서비스 오픈 후 5만원 상당의 혜택을 수 있습니다." />
-        <meta name="twitter:image" content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
-        <meta name="twitter:card" content="%PUBLIC_URL%/img/meetinggo_og_image.png" />
+        <meta name="twitter:image" content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
+        <meta name="twitter:card" content="https://images.pickapic.live/get/51b8f592-6199-c703-dbf1-2a112fcc0a70-1717126612.png" />
         <link rel="canonical" href="/form" />
       </Helmet>
       <Positioner>
