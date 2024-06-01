@@ -134,6 +134,7 @@ const FormPage = () => {
         <MaxWidthWrapper>
           <ImageWrapper>
             <ImageWithFallback
+              svgSrc="\img\new_landingp_5.svg"
               webpSrc="\img\new_landingp_5.webp"
               fallbackSrc="\img\new_landingp_5.png"
               alt="청춘으로 추억을 만들자, 미팅은? 미팅고 라고 적힌 미팅GO 대표 이미지"
@@ -146,6 +147,7 @@ const FormPage = () => {
           <GoogleFormEmbed src={googleFormUrl} title="Google Form" onLoad={() => logEvent(analytics, 'form_google_form_load')} />
           <ImageWrapper margin="6vh 0 0 0" width="154px">
             <ImageWithFallback
+              svgSrc="\img\cry_emoji.svg"
               webpSrc="\img\cry_emoji.webp"
               fallbackSrc="\img\cry_emoji.png"
               alt="Cry Emoji Image"
@@ -157,6 +159,7 @@ const FormPage = () => {
           <Button id="Btn_form" onClick={(e) => handleButtonClick(e, 'form_click_google_form')}>
             구글 폼 연결
             <ImageWithFallback
+              svgSrc="\img\arrow_icon.svg"
               webpSrc="\img\arrow_icon.webp"
               fallbackSrc="\img\arrow_icon.png"
               alt="arrow icon"

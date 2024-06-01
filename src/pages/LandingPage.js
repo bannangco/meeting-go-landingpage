@@ -120,13 +120,15 @@ const StyledButton = styled.button`
   }
 `;
 
-const ImageWithFallback = ({ webpSrc, fallbackSrc, alt }) => (
+const ImageWithFallback = ({ svgSrc, webpSrc, fallbackSrc, alt }) => (
   <picture>
-    <source srcSet={webpSrc} type="image/webp" />
+    {svgSrc && <source srcSet={svgSrc} type="image/svg+xml" />}
+    {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
     <source srcSet={fallbackSrc} type="image/png" />
     <img src={fallbackSrc} alt={alt} style={{ flex: 1, display: 'block', width: '100%' }} />
   </picture>
 );
+
 
 const ImageWrapper = styled.div`
   flex: 1;
@@ -239,6 +241,7 @@ const LandingPage = () => {
         <ContentWrapper>
           <ImageWrapper margin="2vh 0 0 0" width="80%">
             <ImageWithFallback
+              svgSrc="\img\new_landingp_1.svg"
               webpSrc="\img\new_landingp_1.webp"
               fallbackSrc="\img\new_landingp_1.png"
               alt="청춘으로 추억을 만들자, 미팅은? 미팅고 라고 적힌 미팅GO 대표 이미지"
@@ -253,6 +256,7 @@ const LandingPage = () => {
                 <StyledButton id="Btn_start" onClick={(e) => handleButtonClick(e, 'click_start_now')}>
                   지금 시작하기
                   <ImageWithFallback
+                    svgSrc="\img\arrow_icon.svg"
                     webpSrc="\img\arrow_icon.webp"
                     fallbackSrc="\img\arrow_icon.png"
                     alt="arrow icon"
@@ -264,6 +268,7 @@ const LandingPage = () => {
                 <StyledButton bgColor="#5f5f5f" hoverColor="#424242" onClick={handleInstagramClick}>
                   인스타그램
                   <ImageWithFallback
+                    svgSrc="\img\instagram_icon.svg"
                     webpSrc="\img\instagram_icon.webp"
                     fallbackSrc="\img\instagram_icon.png"
                     alt="Instagram icon"
@@ -272,12 +277,13 @@ const LandingPage = () => {
               </div>
             </FlexButtonContainer>
             <InfoText>
-              현재 64명의 대학생들이 사전 신청을 완료했어요 😄
+              현재 66명의 대학생들이 사전 신청을 완료했어요 😄
             </InfoText>
           </CenteredDescription>
 
           <ImageWrapper alignItems="center" margin="8vh 0 2vh 0" width="138px">
             <ImageWithFallback
+              svgSrc="\img\star.svg"
               webpSrc="\img\star.webp"
               fallbackSrc="\img\star.png"
               alt="Star Image"
@@ -340,6 +346,7 @@ const LandingPage = () => {
 
           <ImageWrapper margin="6vh 0 0 0" width="154px">
             <ImageWithFallback
+              svgSrc="\img\kiss_emoji.svg"
               webpSrc="\img\kiss_emoji.webp"
               fallbackSrc="\img\kiss_emoji.png"
               alt="Kiss Emoji Image"
@@ -351,6 +358,7 @@ const LandingPage = () => {
           <StyledButton id="Btn_start" onClick={(e) => handleButtonClick(e, 'click_start_now_bottom')}>
             지금 시작하기
             <ImageWithFallback
+              svgSrc="\img\arrow_icon.svg"
               webpSrc="\img\arrow_icon.webp"
               fallbackSrc="\img\arrow_icon.png"
               alt="arrow icon"

@@ -25,6 +25,13 @@ const Logo = styled.img`
   flex-shrink: 0;
 `;
 
+const LogoStyles = {
+  maxHeight: '50px',
+  maxWidth: '100%',
+  minWidth: '75px',
+  flexShrink: 0,
+};
+
 const LogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -83,6 +90,16 @@ const SpecialButton = styled(NavLink)`
   }
 `;
 
+const ImageWithFallback = ({ svgSrc, webpSrc, fallbackSrc, alt, style }) => (
+  <picture>
+    {svgSrc && <source srcSet={svgSrc} type="image/svg+xml" />}
+    {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
+    <source srcSet={fallbackSrc} type="image/png" />
+    <img src={fallbackSrc} alt={alt} style={style} />
+  </picture>
+);
+
+
 const NavBar = () => {
   const handleNavClick = (event, eventName) => {
     logEvent(analytics, eventName);
@@ -92,7 +109,13 @@ const NavBar = () => {
     <NavContainer>
       <NavBarLeft>
         <LogoLink to="/" onClick={(e) => handleNavClick(e, 'nav_click_logo')}>
-          <Logo src="/logo/logo.png" alt="Logo, 대학생 미팅 앱 미팅고의 로고" />
+          <ImageWithFallback 
+            svgSrc="/logo/logo.svg" 
+            webpSrc="/logo/logo.webp" 
+            fallbackSrc="/logo/logo.png" 
+            alt="Logo, 대학생 미팅 앱 미팅고의 로고" 
+            style={LogoStyles}
+          />
         </LogoLink>
       </NavBarLeft>
       <NavBarRight>
