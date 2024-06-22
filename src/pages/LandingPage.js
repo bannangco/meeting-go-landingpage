@@ -204,7 +204,7 @@ const LandingPage = () => {
   const handleButtonClick = (event, eventName) => {
     logEvent(analytics, eventName);
     if (event.target.id === "Btn_start") {
-      window.location = `/form/`;
+      window.location = `/download/`;
     } else {
       window.location = `/`;
     }
@@ -276,9 +276,9 @@ const LandingPage = () => {
                 </StyledButton>
               </div>
             </FlexButtonContainer>
-            <InfoText>
+            {/* <InfoText>
               현재 66명의 대학생들이 사전 신청을 완료했어요 😄
-            </InfoText>
+            </InfoText> */}
           </CenteredDescription>
 
           <ImageWrapper alignItems="center" margin="8vh 0 2vh 0" width="138px">

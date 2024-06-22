@@ -134,8 +134,8 @@ const NavBar = () => {
             </NavStyle>
           </NavBarMenusMenu>
           <NavBarMenusMenu>
-            <NavStyle to="/form" onClick={(e) => handleNavClick(e, 'nav_click_preregister')}>
-              사전 예약
+            <NavStyle to="/download" onClick={(e) => handleNavClick(e, 'nav_click_preregister')}>
+              다운로드
             </NavStyle>
           </NavBarMenusMenu>
         </NavBarMenus>

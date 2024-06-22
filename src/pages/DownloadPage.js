@@ -90,8 +90,32 @@ const ImageWrapper = styled.div`
   width: ${({ width }) => width || '80%'};
 `;
 
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 4vh 0 2vh 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2vh;
+  
+  img {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+  }
+`;
 const DownloadPage = () => {
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=your.app.id';
+  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.bannangco.meeting_go_mvp';
   const appStoreUrl = 'https://www.apple.com/app-store/';
 
   const handleButtonClick = (event, url) => {
@@ -104,7 +128,7 @@ const DownloadPage = () => {
       <Helmet>
         <title>미팅GO - 다운로드하기</title>
         <meta name="description" content="가장 편리하고 안전한 대학생 미팅 잡기 미팅GO! 지금 다운로드하세요!" />
-        <meta name="keywords" content="미팅, 과팅, 다운로드, 대학생, meeting, 소개팅, 대학생, 미팅고, meetinggo" />
+        <meta name="keywords" content="미팅, 과팅, 다운로드, 대학생, meeting, 소개팅, 대학생, 미팅고, 미팅GO, meetinggo, 술친구, 술게임" />
         <meta name="author" content="Bannangco" />
         <meta property="og:type" content="website" />
         <meta property='og:site_name' content='미팅고.com' />
@@ -130,24 +154,24 @@ const DownloadPage = () => {
             />
           </ImageWrapper>
           <Title>미팅GO - 지금 다운로드하세요!</Title>
-          <ImageWrapper width="154px" margin="4vh 0 2vh 0">
-            <img 
-              src="\img\playstore_icon.png" 
-              alt="Playstore Icon"
-              style={{ cursor: 'pointer', width: '100px', height: '100px' }}
-              onClick={(e) => handleButtonClick(e, playStoreUrl)}
-            />
-          </ImageWrapper>
-          <Description>지금 플레이스토어에서 다운받으세요!</Description>
-          <ImageWrapper width="154px" margin="4vh 0 2vh 0">
-            <img 
-              src="\img\appstore_icon.png" 
-              alt="Appstore Icon"
-              style={{ cursor: 'pointer', width: '100px', height: '100px' }}
-              onClick={(e) => handleButtonClick(e, appStoreUrl)}
-            />
-          </ImageWrapper>
-          <Description>앱스토어는 1주일 내로 출시될 예정입니다..! 1주일만 뒤에 다시 방문해주세요 ㅠㅠ</Description>
+          <IconWrapper>
+            <IconContainer>
+              <img 
+                src="\img\googleplay.svg" 
+                alt="Playstore Icon"
+                onClick={(e) => handleButtonClick(e, playStoreUrl)}
+              />
+              <Description>지금 플레이스토어에서 다운받으세요!</Description>
+            </IconContainer>
+            <IconContainer>
+              <img 
+                src="\img\appstore.svg" 
+                alt="Appstore Icon"
+                onClick={(e) => handleButtonClick(e, appStoreUrl)}
+              />
+              <Description>앱스토어는 1주일 내로 출시될 예정입니다..!<br/>1주일만 뒤에 다시 방문해주세요 ㅠㅠ</Description>
+            </IconContainer>
+          </IconWrapper>
         </MaxWidthWrapper>
       </Positioner>
     </>
