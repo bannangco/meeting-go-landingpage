@@ -116,7 +116,7 @@ const IconContainer = styled.div`
 `;
 const DownloadPage = () => {
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.bannangco.meeting_go_mvp';
-  const appStoreUrl = 'https://www.apple.com/app-store/';
+  const appStoreUrl = 'https://apps.apple.com/app/%EB%AF%B8%ED%8C%85go-%EB%8C%80%ED%95%99%EC%83%9D-%EB%AF%B8%ED%8C%85%EC%9D%80-%EB%AF%B8%ED%8C%85%EA%B3%A0/id6503015279';
 
   const handleButtonClick = (event, url) => {
     logEvent(analytics, 'download_button_click');
@@ -169,7 +169,7 @@ const DownloadPage = () => {
                 alt="Appstore Icon"
                 onClick={(e) => handleButtonClick(e, appStoreUrl)}
               />
-              <Description>앱스토어는 1주일 내로 출시될 예정입니다..!<br/>1주일만 뒤에 다시 방문해주세요 ㅠㅠ</Description>
+              <Description>지금 앱스토어에서 다운받으세요!</Description>
             </IconContainer>
           </IconWrapper>
         </MaxWidthWrapper>
