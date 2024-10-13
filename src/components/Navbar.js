@@ -138,6 +138,9 @@ const NavBar = () => {
               다운로드
             </NavStyle>
           </NavBarMenusMenu>
+          <NavBarMenusMenu>
+            <NavStyle to="/food-test">요리테스트</NavStyle>
+          </NavBarMenusMenu>
         </NavBarMenus>
       </NavBarRight>
     </NavContainer>
