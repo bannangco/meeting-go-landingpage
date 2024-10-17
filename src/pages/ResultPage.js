@@ -302,7 +302,7 @@ const ResultPage = () => {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: '연애유형으로 보는 나의 흑백요리사 테스트 결과',
+          title: '연애유형으로 보는 나의 흑백요리사 음식 테스트 결과',
           description: `나는 ${result.title}입니다!`,
           imageUrl: result.image,
           link: {
@@ -333,7 +333,7 @@ const ResultPage = () => {
     logEvent(analytics, 'foodtest_share_via_webapi_click');
     if (navigator.share) {
       navigator.share({
-        title: '연애유형으로 보는 나의 흑백요리사 테스트 결과',
+        title: '연애유형으로 보는 나의 흑백요리사 음식 테스트 결과',
         text: `나는 ${result.title}입니다!`,
         url: `${window.location.origin}/food-test/share/${resultId}`,
       })
