@@ -156,14 +156,14 @@ const FoodTest = () => {
 
   useEffect(() => {
     // Log event when the component mounts
-    logEvent(analytics, 'food_test_visit');
+    logEvent(analytics, 'foodtest_visit');
   }, []);
 
   useEffect(() => {
     return () => {
       // Component will unmount
       if (currentQuestionIndex >= 0 && currentQuestionIndex < questions.length && !hasAbandoned) {
-        logEvent(analytics, 'test_abandoned', {
+        logEvent(analytics, 'foodtest_abandoned', {
           last_question_index: currentQuestionIndex,
         });
       }
@@ -187,7 +187,7 @@ const FoodTest = () => {
       // Set a timeout to detect abandonment (e.g., 60 seconds of inactivity)
       abandonmentTimeout.current = setTimeout(() => {
         if (currentQuestionIndex < questions.length && !hasAbandoned) {
-          logEvent(analytics, 'test_abandoned', {
+          logEvent(analytics, 'foodtest_abandoned', {
             last_question_index: currentQuestionIndex,
           });
           setHasAbandoned(true);
@@ -248,12 +248,12 @@ const FoodTest = () => {
   ];
 
   const goToLandingPage = () => {
-    logEvent(analytics, 'landing_page_button_click');
+    logEvent(analytics, 'foodtest_landing_page_button_click');
     navigate("/");
   };
 
   const startTest = () => {
-    logEvent(analytics, 'start_test_button_click');
+    logEvent(analytics, 'foodtest_start_test_button_click');
     setCurrentQuestionIndex(0);
   };
 
@@ -263,7 +263,7 @@ const FoodTest = () => {
     const newAnswers = [...answers, buttonIndex];
     setAnswers(newAnswers);
 
-    logEvent(analytics, 'question_answered', {
+    logEvent(analytics, `foodtest_question_answered`, {
       question_index: currentQuestionIndex,
       answer_index: buttonIndex,
       time_spent_ms: timeSpent,
@@ -281,7 +281,7 @@ const FoodTest = () => {
       console.log("answers:", answers);
       console.log("calcResult:", calcResult);
 
-      logEvent(analytics, 'test_completed', {
+      logEvent(analytics, 'foodtest_test_completed', {
         result_id: calcResult,
         answers: newAnswers.toString(), // Convert array to string for logging
       });
