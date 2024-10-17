@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { analytics } from '../firebase';
+import { logEvent } from "firebase/analytics";
 import axios from 'axios';
 
 import backIcon from "../assets/back_vector.svg";
@@ -148,6 +150,11 @@ const FoodTest = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1); // -1 means the main page
   const [answers, setAnswers] = useState([]);
 
+  useEffect(() => {
+    // Log event when the component mounts
+    logEvent(analytics, 'food_test_visit');
+  }, []);
+
   const questions = [
     {
       background: questionImage1,
@@ -200,16 +207,23 @@ const FoodTest = () => {
   ];
 
   const goToLandingPage = () => {
+    logEvent(analytics, 'landing_page_button_click');
     navigate("/");
   };
 
   const startTest = () => {
+    logEvent(analytics, 'start_test_button_click');
     setCurrentQuestionIndex(0);
   };
 
   const handleAnswerClick = async (buttonIndex) => {
     const newAnswers = [...answers, buttonIndex];
     setAnswers(newAnswers);
+
+    logEvent(analytics, 'answer_selected', {
+      question_index: currentQuestionIndex,
+      answer_index: buttonIndex,
+    });
 
     // Move to the next question or show result if it's the last question
     if (currentQuestionIndex < questions.length - 1) {
@@ -218,6 +232,12 @@ const FoodTest = () => {
       const calcResult = calculateResult(answers);
       console.log("answers:", answers);
       console.log("calcResult:", calcResult);
+
+      logEvent(analytics, 'test_completed', {
+        result_id: calcResult,
+        answers: newAnswers.toString(), // Convert array to string for logging
+      });
+      
       try {
         await axios.post(`https://${process.env.REACT_APP_API_DNS}/api/foodTest/testResult`, {
           answers: answers,

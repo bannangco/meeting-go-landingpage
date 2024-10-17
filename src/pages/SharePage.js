@@ -1,8 +1,11 @@
 // SharePage.js
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import { logEvent } from "firebase/analytics";
 
+
+import { analytics } from '../firebase';
 import resultBackground from "../assets/foodtest/유형테스트_결과페이지_배경.png";
 import sharePageButton from "../assets/foodtest/유형테스트_공유페이지_버튼.png";
 
@@ -230,11 +233,20 @@ const SharePage = () => {
   const navigate = useNavigate();
   const result = resultsData[resultId];
 
+  useEffect(() => {
+    // Log event when the component mounts
+    logEvent(analytics, 'share_page_visit', {
+      result_id: resultId,
+      result_title: result.title,
+    });
+  }, [resultId]);
+
   if (!result) {
     return <div>결과가 없습니다. 테스트를 다시 실행해주세요.</div>;
   }
 
   const retakeTest = () => {
+    logEvent(analytics, 'share_page_button_click');
     navigate("/food-test");
   };
 

@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef }  from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import html2canvas from 'html2canvas';
+import { logEvent } from "firebase/analytics";
 
+import { analytics } from '../firebase';
 import resultBackground from "../assets/foodtest/유형테스트_결과페이지_배경.png";
 import resultPageButton1 from "../assets/foodtest/유형테스트_결과페이지_버튼1.png";
 import resultPageButton2 from "../assets/foodtest/유형테스트_결과페이지_버튼2.png";
@@ -277,15 +279,25 @@ const ResultPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Log event when the component mounts
+    logEvent(analytics, 'result_page_visit', {
+      result_id: resultId,
+      result_title: result.title,
+    });
+  }, [resultId]);
+
   if (!result) {
     return <div>결과가 없습니다. 테스트를 다시 실행해주세요.</div>;
   }
 
   const retakeTest = () => {
+    logEvent(analytics, 'retake_test_button_click');
     navigate("/food-test");
   };
 
   const shareToKakao = () => {
+    logEvent(analytics, 'share_to_kakao_click');
     if (window.Kakao && window.Kakao.isInitialized()) {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
@@ -314,6 +326,7 @@ const ResultPage = () => {
   };
 
   const shareViaWebAPI = () => {
+    logEvent(analytics, 'share_via_webapi_click');
     if (navigator.share) {
       navigator.share({
         title: '연애유형으로 보는 나의 흑백요리사 테스트 결과',
@@ -328,6 +341,7 @@ const ResultPage = () => {
   };
 
   const shareToTwitter = () => {
+    logEvent(analytics, 'share_to_twitter_click');
     const text = encodeURIComponent(`나는 ${result.title}입니다! #흑백요리사음식테스트`);
     const url = encodeURIComponent(`${window.location.origin}/food-test/share/${resultId}`);
     const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
@@ -335,6 +349,7 @@ const ResultPage = () => {
   };
 
   const copyLink = () => {
+    logEvent(analytics, 'copy_link_click');
     navigator.clipboard.writeText(`${window.location.origin}/food-test/share/${resultId}`)
       .then(() => {
         alert('링크가 클립보드에 복사되었습니다.');
@@ -346,6 +361,7 @@ const ResultPage = () => {
 
   const shareToInstagram = () => {
     // 웹에서 인스타 직접 공유 불가, 이미지 다운로드 후 인스타에 업로드
+    logEvent(analytics, 'share_to_instagram_click');
     downloadResultImage();
     alert('이미지가 다운로드되었습니다. Instagram에서 공유하세요!');
   };
