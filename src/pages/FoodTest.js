@@ -7,6 +7,7 @@ import logo from "../assets/logo.svg";
 
 import mainPageImage from "../assets/foodtest/유형테스트_메인페이지.png";
 import mainPageButton from "../assets/foodtest/유형테스트_메인페이지_버튼1.png";
+import mainPageButton2 from "../assets/foodtest/유형테스트_메인페이지_버튼2.png";
 
 import questionImage1 from "../assets/foodtest/유형테스트_문제1.png";
 import questionButton1_1 from "../assets/foodtest/유형테스트_문제1_버튼1.png";
@@ -105,7 +106,7 @@ const ButtonImage = styled.img`
   bottom: ${(props) => props.bottom || "15%"};
   left: ${(props) => props.left || "50%"};
   transform: translateX(-50%);
-  width: 90%;
+  width: ${(props) => props.width || "90%"};
   max-width: 350px;
   cursor: pointer;
 
@@ -360,6 +361,7 @@ const FoodTest = () => {
         <>
           <Logo src={logo} alt="MeetingGO Logo" onClick={goToLandingPage} />
           <ButtonImage src={mainPageButton} alt="Start Test" onClick={startTest} />
+          <ButtonImage src={mainPageButton2} alt="Start Test" onClick={goToLandingPage} bottom="9%" width="50%" />
         </>
       ) : (
         <>
