@@ -1,41 +1,48 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import mainPageImage from "../assets/유형테스트_메인페이지.png";
-import mainPageButton from "../assets/유형테스트_메인페이지_버튼1.png";
+
 import backIcon from "../assets/back_vector.svg";
 import logo from "../assets/logo.svg";
 
-import questionImage1 from "../assets/유형테스트_문제1.png";
-import questionButton1_1 from "../assets/유형테스트_문제1_버튼1.png";
-import questionButton1_2 from "../assets/유형테스트_문제1_버튼2.png";
+import mainPageImage from "../assets/foodtest/유형테스트_메인페이지.png";
+import mainPageButton from "../assets/foodtest/유형테스트_메인페이지_버튼1.png";
 
-import questionImage2 from "../assets/유형테스트_문제2.png";
-import questionButton2_1 from "../assets/유형테스트_문제2_버튼1.png";
-import questionButton2_2 from "../assets/유형테스트_문제2_버튼2.png";
+import questionImage1 from "../assets/foodtest/유형테스트_문제1.png";
+import questionButton1_1 from "../assets/foodtest/유형테스트_문제1_버튼1.png";
+import questionButton1_2 from "../assets/foodtest/유형테스트_문제1_버튼2.png";
 
-import questionImage3 from "../assets/유형테스트_문제3.png";
-import questionButton3_1 from "../assets/유형테스트_문제3_버튼1.png";
-import questionButton3_2 from "../assets/유형테스트_문제3_버튼2.png";
-import questionButton3_3 from "../assets/유형테스트_문제3_버튼3.png";
-import questionButton3_4 from "../assets/유형테스트_문제3_버튼4.png";
+import questionImage2 from "../assets/foodtest/유형테스트_문제2.png";
+import questionButton2_1 from "../assets/foodtest/유형테스트_문제2_버튼1.png";
+import questionButton2_2 from "../assets/foodtest/유형테스트_문제2_버튼2.png";
 
-import questionImage4 from "../assets/유형테스트_문제4.png";
-import questionButton4_1 from "../assets/유형테스트_문제4_버튼1.png";
-import questionButton4_2 from "../assets/유형테스트_문제4_버튼2.png";
+import questionImage3 from "../assets/foodtest/유형테스트_문제3.png";
+import questionButton3_1 from "../assets/foodtest/유형테스트_문제3_버튼1.png";
+import questionButton3_2 from "../assets/foodtest/유형테스트_문제3_버튼2.png";
+import questionButton3_3 from "../assets/foodtest/유형테스트_문제3_버튼3.png";
+import questionButton3_4 from "../assets/foodtest/유형테스트_문제3_버튼4.png";
 
-import questionImage5 from "../assets/유형테스트_문제5.png";
-import questionButton5_1 from "../assets/유형테스트_문제5_버튼1.png";
-import questionButton5_2 from "../assets/유형테스트_문제5_버튼2.png";
-import questionButton5_3 from "../assets/유형테스트_문제5_버튼3.png";
-import questionButton5_4 from "../assets/유형테스트_문제5_버튼4.png";
+import questionImage4 from "../assets/foodtest/유형테스트_문제4.png";
+import questionButton4_1 from "../assets/foodtest/유형테스트_문제4_버튼1.png";
+import questionButton4_2 from "../assets/foodtest/유형테스트_문제4_버튼2.png";
 
-import questionImage6 from "../assets/유형테스트_문제6.png";
-import questionButton6_1 from "../assets/유형테스트_문제6_버튼1.png";
-import questionButton6_2 from "../assets/유형테스트_문제6_버튼2.png";
-import questionButton6_3 from "../assets/유형테스트_문제6_버튼3.png";
-import questionButton6_4 from "../assets/유형테스트_문제6_버튼4.png";
+import questionImage5 from "../assets/foodtest/유형테스트_문제5.png";
+import questionButton5_1 from "../assets/foodtest/유형테스트_문제5_버튼1.png";
+import questionButton5_2 from "../assets/foodtest/유형테스트_문제5_버튼2.png";
+import questionButton5_3 from "../assets/foodtest/유형테스트_문제5_버튼3.png";
+import questionButton5_4 from "../assets/foodtest/유형테스트_문제5_버튼4.png";
 
+import questionImage6 from "../assets/foodtest/유형테스트_문제6.png";
+import questionButton6_1 from "../assets/foodtest/유형테스트_문제6_버튼1.png";
+import questionButton6_2 from "../assets/foodtest/유형테스트_문제6_버튼2.png";
+import questionButton6_3 from "../assets/foodtest/유형테스트_문제6_버튼3.png";
+import questionButton6_4 from "../assets/foodtest/유형테스트_문제6_버튼4.png";
+
+import resultPageImage from "../assets/foodtest/유형테스트_결과페이지_배경.png";
+import resultPageButton1 from "../assets/foodtest/유형테스트_결과페이지_버튼1.png";
+import resultPageButton2 from "../assets/foodtest/유형테스트_결과페이지_버튼2.png";
+
+import sharedPageButton from "../assets/foodtest/유형테스트_공유페이지_버튼.png";
 
 // Container for the whole page
 const Container = styled.div`
