@@ -17,27 +17,21 @@ import linkIcon from '../assets/share/link_copy.png';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff') format('woff'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFLight.ttf') format('truetype');
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
     font-weight: 300;
     font-style: normal;
   }
   
   @font-face {
     font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff') format('woff'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFMedium.ttf') format('truetype');
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
   }
   
   @font-face {
     font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff') format('woff'),
-         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFBold.ttf') format('truetype');
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
   }
