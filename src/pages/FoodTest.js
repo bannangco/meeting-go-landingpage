@@ -252,7 +252,7 @@ const FoodTest = () => {
       }
     }
 
-    const calcResult = -1;
+    let calcResult;
 
     if (IE>0) {
       if (SN>0) {
