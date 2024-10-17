@@ -39,8 +39,6 @@ import questionButton6_2 from "../assets/foodtest/유형테스트_문제6_버튼
 import questionButton6_3 from "../assets/foodtest/유형테스트_문제6_버튼3.png";
 import questionButton6_4 from "../assets/foodtest/유형테스트_문제6_버튼4.png";
 
-import sharedPageButton from "../assets/foodtest/유형테스트_공유페이지_버튼.png";
-
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'GmarketSans';

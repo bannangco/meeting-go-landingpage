@@ -5,6 +5,7 @@ import FormPage from "./pages/FormPage";
 import DownloadPage from "./pages/DownloadPage";
 import FoodTest from "./pages/FoodTest";
 import ResultPage from "./pages/ResultPage";
+import SharePage from "./pages/SharePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
@@ -23,6 +24,7 @@ function Layout() {
         <Route path="/download" exact={true} element={<DownloadPage />}></Route>
         <Route path="/food-test" exact={true} element={<FoodTest />}></Route>
         <Route path="/food-test/result/:resultId" element={<ResultPage />}></Route>
+        <Route path="/food-test/share/:resultId" element={<SharePage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
       {!hideNavbarFooter && <FooterNew />}

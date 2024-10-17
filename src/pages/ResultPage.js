@@ -47,15 +47,12 @@ const Container = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     margin: 0 auto;
     width: 375px;
 
     @media (max-height: 500px) {
       width: 250px;
-    }
-    @media (max-height: 650px) {
-      width: 300px;
     }
     @media (min-height: 850px) {
       width: 420px;
@@ -64,14 +61,6 @@ const Container = styled.div`
       width: 480px;
     }
   }
-`;
-
-const Logo = styled.img`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 100px;
-  cursor: pointer;
 `;
 
 const MyFoodPart = styled.div`
@@ -130,6 +119,7 @@ const DescriptionBox = styled.div`
   margin-top: 10px;
   margin-bottom: 15px;
   width: 90%;
+  min-height: 15vh;
   max-height: 28vh;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -153,18 +143,14 @@ const DescriptionText = styled.p`
     font-size: 12px;
   }
 
-  @media (min-width: 550px) {
-    font-size: 13px;
-  }
-
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     font-size: 13px;
   }
 `;
 
 const CompatibilityPart = styled.div`
   width: 100%;
-  min-height: 20%;
+  height: fit-content;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
 `;
@@ -299,10 +285,6 @@ const ResultPage = () => {
     navigate("/food-test");
   };
 
-  const toggleShareMenu = () => {
-    setShowShareMenu(!showShareMenu);
-  };
-
   const shareToKakao = () => {
     if (window.Kakao && window.Kakao.isInitialized()) {
       window.Kakao.Share.sendDefault({
@@ -312,16 +294,16 @@ const ResultPage = () => {
           description: `나는 ${result.title}입니다!`,
           imageUrl: result.image,
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: `${window.location.origin}/food-test/share/${resultId}`,
+            webUrl: `${window.location.origin}/food-test/share/${resultId}`,
           },
         },
         buttons: [
           {
             title: '결과 확인하기',
             link: {
-              mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
+              mobileWebUrl: `${window.location.origin}/food-test/share/${resultId}`,
+              webUrl: `${window.location.origin}/food-test/share/${resultId}`,
             },
           },
         ],
@@ -336,7 +318,7 @@ const ResultPage = () => {
       navigator.share({
         title: '연애유형으로 보는 나의 흑백요리사 테스트 결과',
         text: `나는 ${result.title}입니다!`,
-        url: window.location.href,
+        url: `${window.location.origin}/food-test/share/${resultId}`,
       })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
@@ -347,13 +329,13 @@ const ResultPage = () => {
 
   const shareToTwitter = () => {
     const text = encodeURIComponent(`나는 ${result.title}입니다! #흑백요리사음식테스트`);
-    const url = encodeURIComponent(window.location.href);
+    const url = encodeURIComponent(`${window.location.origin}/food-test/share/${resultId}`);
     const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     window.open(twitterUrl, '_blank');
   };
 
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href)
+    navigator.clipboard.writeText(`${window.location.origin}/food-test/share/${resultId}`)
       .then(() => {
         alert('링크가 클립보드에 복사되었습니다.');
       })
