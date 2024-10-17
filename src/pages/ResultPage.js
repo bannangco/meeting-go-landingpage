@@ -80,7 +80,7 @@ const MyFoodPart = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 8%;
 `;
 
 const MyFoodTitle = styled.h2`
@@ -100,11 +100,14 @@ const ResultImage = styled.img`
 `;
 
 const ResultTitle = styled.h3`
+  width: 90%;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 500;
   color: #fff;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 1;
 `;
 
 const ResultShort = styled.p`
@@ -112,20 +115,20 @@ const ResultShort = styled.p`
   font-weight: 300;
   color: #fff;
   margin-top: -7px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 `;
 
 const DescriptionBox = styled.div`
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   width: 90%;
-  height: 38%;
+  max-height: 28vh;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   border: 3px solid black;
   box-shadow: 0px 1px 11.6px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(24.5px);
-  padding: 8px;
+  padding: 10px;
   overflow-y: auto;
 `;
 
@@ -141,7 +144,7 @@ const DescriptionText = styled.p`
 
 const CompatibilityPart = styled.div`
   width: 100%;
-  height: 20%;
+  min-height: 20%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
 `;
@@ -157,7 +160,7 @@ const CompatibilityTitle = styled.h4`
   font-size: 16px;
   font-weight: 500;
   color: #fff;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 5px;
 `;
 
@@ -170,18 +173,23 @@ const CompatibilityImage = styled.img`
 `;
 
 const CompatibilityShort = styled.p`
+  width: 98%;
   font-size: 10px;
   font-weight: 300;
   color: #fff;
-  margin-top: 5px;
+  margin-top: 8px;
   margin-bottom: 0px;
+  text-align: center;
 `;
 
 const CompatibilityName = styled.p`
+  width: 95%;
   font-size: 16px;
   font-weight: 300;
   color: #fff;
-  margin-top: -5px;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 1.2;
 `;
 
 const ButtonsPart = styled.div`
@@ -247,7 +255,7 @@ const ResultPage = () => {
 
   useEffect(() => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_FIREBASE_API_KEY);
+      window.Kakao.init(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
     }
   }, []);
 
