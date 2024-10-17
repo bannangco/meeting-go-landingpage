@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import backIcon from "../assets/back_vector.svg";
 import logo from "../assets/logo.svg";
 
@@ -11,8 +11,38 @@ import resultPageButton2 from "../assets/foodtest/유형테스트_결과페이�
 // 16가지 결과 이미지들
 import resultsData from "../data/resultsData";
 
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+`;
 
 const Container = styled.div`
+  font-family: 'GmarketSans', sans-serif;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +98,8 @@ const ResultImage = styled.img`
   width: auto;
   max-width: 80%;
   height: auto;
-  margin-top: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   border-radius: 10px;
 `;
 
@@ -76,16 +107,16 @@ const ResultTitle = styled.h3`
   font-size: 28px;
   font-weight: 400;
   color: #fff;
-  margin-top: 5px;
+  margin-top: 0px;
   margin-bottom: 0px;
 `;
 
 const ResultShort = styled.p`
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   color: #fff;
-  margin-top: 0px;
-  margin-bottom: 5px;
+  margin-top: -7px;
+  margin-bottom: 0px;
 `;
 
 const DescriptionBox = styled.div`
@@ -97,7 +128,7 @@ const DescriptionBox = styled.div`
   border: 3px solid black;
   box-shadow: 0px 1px 11.6px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(24.5px);
-  padding: 10px;
+  padding: 8px;
   overflow-y: auto;
 `;
 
@@ -107,7 +138,7 @@ const DescriptionText = styled.p`
   color: #010101;
   text-align: left;
   white-space: pre-wrap;
-  line-height: 1.1;
+  line-height: 1;
   margin: 0px;
 `;
 
@@ -129,7 +160,7 @@ const CompatibilityTitle = styled.h4`
   font-size: 16px;
   font-weight: 500;
   color: #fff;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 5px;
 `;
 
@@ -153,7 +184,7 @@ const CompatibilityName = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #fff;
-  margin-top: 0px;
+  margin-top: -5px;
 `;
 
 const ButtonsPart = styled.div`
@@ -197,8 +228,9 @@ const ResultPage = () => {
   };
 
   return (
+    <>
+    <GlobalStyle />
     <Container bgimage={resultBackground}>
-
       <MyFoodPart>
         <MyFoodTitle>나의 음식 유형</MyFoodTitle>
         <ResultImage src={result.image} alt={result.title} />
@@ -244,6 +276,7 @@ const ResultPage = () => {
         />
       </ButtonsPart>
     </Container>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import backIcon from "../assets/back_vector.svg";
@@ -38,13 +38,40 @@ import questionButton6_2 from "../assets/foodtest/유형테스트_문제6_버튼
 import questionButton6_3 from "../assets/foodtest/유형테스트_문제6_버튼3.png";
 import questionButton6_4 from "../assets/foodtest/유형테스트_문제6_버튼4.png";
 
-import resultPageImage from "../assets/foodtest/유형테스트_결과페이지_배경.png";
-import resultPageButton1 from "../assets/foodtest/유형테스트_결과페이지_버튼1.png";
-import resultPageButton2 from "../assets/foodtest/유형테스트_결과페이지_버튼2.png";
-
 import sharedPageButton from "../assets/foodtest/유형테스트_공유페이지_버튼.png";
 
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Light.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Medium.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSans-Bold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket-sans/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+`;
+
 const Container = styled.div`
+  font-family: 'GmarketSans', sans-serif;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -327,6 +354,8 @@ const FoodTest = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
+    <>
+    <GlobalStyle />
     <Container bgimage={currentQuestionIndex === -1 ? mainPageImage : currentQuestion.background}>
       {currentQuestionIndex === -1 ? (
         <>
@@ -349,6 +378,7 @@ const FoodTest = () => {
         </>
       )}
     </Container>
+    </>
   );
 };
 
