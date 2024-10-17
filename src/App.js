@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import FormPage from "./pages/FormPage";
 import DownloadPage from "./pages/DownloadPage";
 import FoodTest from "./pages/FoodTest";
+import ResultPage from "./pages/ResultPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
@@ -12,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 
 function Layout() {
   const location = useLocation();
-  const hideNavbarFooter = location.pathname === "/food-test";
+  const hideNavbarFooter = location.pathname.startsWith("/food-test");
 
   return (
     <>
@@ -21,6 +22,7 @@ function Layout() {
         <Route path="/" exact={true} element={<LandingPage />}></Route>
         <Route path="/download" exact={true} element={<DownloadPage />}></Route>
         <Route path="/food-test" exact={true} element={<FoodTest />}></Route>
+        <Route path="/food-test/result/:resultId" element={<ResultPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
       {!hideNavbarFooter && <FooterNew />}

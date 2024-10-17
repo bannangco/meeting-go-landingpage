@@ -44,7 +44,6 @@ import resultPageButton2 from "../assets/foodtest/유형테스트_결과페이�
 
 import sharedPageButton from "../assets/foodtest/유형테스트_공유페이지_버튼.png";
 
-// Container for the whole page
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,10 +57,19 @@ const Container = styled.div`
   @media (min-width: 768px) {
     margin: 0 auto;
     width: 375px;
+
+    @media (max-height: 500px) {
+      width: 250px;
+    }
+    @media (max-height: 650px) {
+      width: 300px;
+    }
+    @media (min-height: 950px) {
+      width: 450px;
+    }
   }
 `;
 
-// For placing the custom buttons (using images as buttons)
 const ButtonImage = styled.img`
   position: absolute;
   bottom: ${(props) => props.bottom || "15%"};
@@ -70,6 +78,18 @@ const ButtonImage = styled.img`
   width: 90%;
   max-width: 350px;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    @media (max-height: 500px) {
+      width: 230px;
+    }
+    @media (max-height: 650px) {
+      width: 280px;
+    }
+    @media (min-height: 950px) {
+      max-width: 430px;
+    }
+  }
 `;
 
 const Logo = styled.img`
@@ -91,8 +111,8 @@ const BackIcon = styled.img`
 const FoodTest = () => {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1); // -1 means the main page
+  const [answers, setAnswers] = useState([]);
 
-  // Array to store information for each question (images and buttons)
   const questions = [
     {
       background: questionImage1,
@@ -153,12 +173,25 @@ const FoodTest = () => {
   };
 
   const handleAnswerClick = (buttonIndex) => {
+    setAnswers([...answers, buttonIndex]);
+    console.log("buttonIndex: ", buttonIndex);
+    console.log("answer click, answers: ", answers);
+
     // Move to the next question or show result if it's the last question
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
+      const resultId = calculateResult(answers);
       alert("Test Completed!");
+      navigate(`/food-test/result/${resultId}`);
     }
+  };
+
+  const calculateResult = (answers) => {
+    console.log("calculateResult answers: ", answers);
+    const sum = answers.reduce((acc, curr) => acc + curr, 0);
+    const resultId = sum % 16;
+    return resultId;
   };
 
   const goBackToMain = () => {
@@ -171,14 +204,11 @@ const FoodTest = () => {
     <Container bgImage={currentQuestionIndex === -1 ? mainPageImage : currentQuestion.background}>
       {currentQuestionIndex === -1 ? (
         <>
-          {/* Show Logo on the Main page */}
           <Logo src={logo} alt="MeetingGO Logo" onClick={goToLandingPage} />
-          {/* Main Page Button */}
           <ButtonImage src={mainPageButton} alt="Start Test" onClick={startTest} />
         </>
       ) : (
         <>
-          {/* Show Back Icon for questions */}
           <BackIcon src={backIcon} alt="Go back" onClick={goBackToMain} />
           {/* Render buttons for the current question */}
           {currentQuestion.buttons.map((button, index) => (
