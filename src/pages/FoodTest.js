@@ -50,7 +50,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url(${(props) => props.bgImage});
+  background-image: url(${(props) => props.bgimage});
   background-size: cover;
   background-position: center;
 
@@ -64,8 +64,11 @@ const Container = styled.div`
     @media (max-height: 650px) {
       width: 300px;
     }
+    @media (min-height: 850px) {
+      width: 420px;
+    }
     @media (min-height: 950px) {
-      width: 450px;
+      width: 480px;
     }
   }
 `;
@@ -85,6 +88,9 @@ const ButtonImage = styled.img`
     }
     @media (max-height: 650px) {
       width: 280px;
+    }
+    @media (min-height: 850px) {
+      max-width: 400px;
     }
     @media (min-height: 950px) {
       max-width: 430px;
@@ -173,25 +179,145 @@ const FoodTest = () => {
   };
 
   const handleAnswerClick = (buttonIndex) => {
-    setAnswers([...answers, buttonIndex]);
-    console.log("buttonIndex: ", buttonIndex);
-    console.log("answer click, answers: ", answers);
+    const newAnswers = [...answers, buttonIndex];
+    setAnswers(newAnswers);
 
     // Move to the next question or show result if it's the last question
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      const resultId = calculateResult(answers);
+      const calcResult = calculateResult(answers);
       alert("Test Completed!");
-      navigate(`/food-test/result/${resultId}`);
+      navigate(`/food-test/result/${calcResult}`);
     }
   };
 
   const calculateResult = (answers) => {
-    console.log("calculateResult answers: ", answers);
-    const sum = answers.reduce((acc, curr) => acc + curr, 0);
-    const resultId = sum % 16;
-    return resultId;
+    let IE = 0;
+    let SN = 0;
+    let TF = 0;
+    let JP = 0;
+
+    for (let i = 0; i < answers.length; i++) {
+      const answer = answers[i];
+      switch (i) {
+        case 0:
+          IE += answer === 0 ? -1 : 1;
+          break;
+        case 1:
+          JP += answer === 0 ? 1 : -1;
+          break;
+        case 2:
+          if (answer === 0 || answer === 2) {
+            IE += 1;
+          } else {
+            IE -= 1;
+          }
+          break;
+        case 3:
+          SN += answer === 0 ? 1 : -1;
+          break;
+        case 4:
+          if (answer === 0) {
+            TF += 1;
+            JP += 1;
+          } else if (answer === 1) {
+            TF += 1;
+            JP -= 1;
+          } else if (answer === 2) {
+            TF -= 1;
+            JP += 1;
+          } else {
+            TF -= 1;
+            JP -= 1;
+          }
+          break;
+        case 5:
+          if (answer === 0) {
+            IE -= 1;
+            JP += 1;
+          } else if (answer === 1) {
+            IE -= 1;
+            JP -= 1;
+          } else if (answer === 2) {
+            IE += 1;
+            JP += 1;
+          } else {
+            IE += 1;
+            JP -= 1;
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    const calcResult = -1;
+
+    if (IE>0) {
+      if (SN>0) {
+        if (TF>0) {
+          if (JP>0) {
+            calcResult = 0; //istj
+          } else {
+            calcResult = 4; //istp
+          }
+        } else {
+          if (JP>0) {
+            calcResult = 1; //isfj
+          } else {
+            calcResult = 5; //isfp
+          }
+        }
+      } else {
+        if (TF>0) {
+          if (JP>0) {
+            calcResult = 3; //intj
+          } else {
+            calcResult = 7; //intp
+          }
+        } else {
+          if (JP>0) {
+            calcResult = 6; //infj
+          } else {
+            calcResult = 2; //infp
+          }
+        }
+      }
+    }
+    else {
+      if (SN>0) {
+        if (TF>0) {
+          if (JP>0) {
+            calcResult = 12; //estj
+          } else {
+            calcResult = 8; //estp
+          }
+        } else {
+          if (JP>0) {
+            calcResult = 13; //esfj
+          } else {
+            calcResult = 9; //esfp
+          }
+        }
+      } else {
+        if (TF>0) {
+          if (JP>0) {
+            calcResult = 15; //entj
+          } else {
+            calcResult = 11; //entp
+          }
+        } else {
+          if (JP>0) {
+            calcResult = 14; //enfj
+          } else {
+            calcResult = 10; //enfp
+          }
+        }
+      }
+    }
+
+    return calcResult;
   };
 
   const goBackToMain = () => {
@@ -201,7 +327,7 @@ const FoodTest = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <Container bgImage={currentQuestionIndex === -1 ? mainPageImage : currentQuestion.background}>
+    <Container bgimage={currentQuestionIndex === -1 ? mainPageImage : currentQuestion.background}>
       {currentQuestionIndex === -1 ? (
         <>
           <Logo src={logo} alt="MeetingGO Logo" onClick={goToLandingPage} />

@@ -17,7 +17,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url(${(props) => props.bgImage});
+  background-image: url(${(props) => props.bgimage});
   background-size: cover;
   background-position: center;
 
@@ -80,7 +80,7 @@ const ResultPage = () => {
   };
 
   return (
-    <Container bgImage={resultBackground}>
+    <Container bgimage={resultBackground}>
       {/* Back to Home Logo */}
       <Logo src={logo} alt="Logo" onClick={goToLandingPage} />
 
