@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import backIcon from "../assets/back_vector.svg";
 import logo from "../assets/logo.svg";
@@ -105,7 +106,7 @@ const ButtonImage = styled.img`
   left: ${(props) => props.left || "50%"};
   transform: translateX(-50%);
   width: ${(props) => props.width || "90%"};
-  max-width: 350px;
+  max-width: ${(props) => props.maxwidth || "350px"};
   cursor: pointer;
 
   @media (min-width: 768px) {
@@ -117,9 +118,11 @@ const ButtonImage = styled.img`
     }
     @media (min-height: 850px) {
       max-width: 400px;
+      max-width: ${(props) => props.maxwidth || "400px"};
     }
     @media (min-height: 950px) {
       max-width: 430px;
+      max-width: ${(props) => props.maxwidth || "430px"};
     }
   }
 `;
@@ -204,7 +207,7 @@ const FoodTest = () => {
     setCurrentQuestionIndex(0);
   };
 
-  const handleAnswerClick = (buttonIndex) => {
+  const handleAnswerClick = async (buttonIndex) => {
     const newAnswers = [...answers, buttonIndex];
     setAnswers(newAnswers);
 
@@ -213,6 +216,18 @@ const FoodTest = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       const calcResult = calculateResult(answers);
+      console.log("answers:", answers);
+      console.log("calcResult:", calcResult);
+      try {
+        await axios.post(`https://${process.env.REACT_APP_API_DNS}/api/foodTest/testResult`, {
+          answers: answers,
+          resultId: calcResult,
+        });
+        console.log('Test result sent successfully');
+      } catch (error) {
+        console.error('Error sending test result:', error);
+      }
+
       navigate(`/food-test/result/${calcResult}`);
     }
   };
@@ -359,7 +374,7 @@ const FoodTest = () => {
         <>
           <Logo src={logo} alt="MeetingGO Logo" onClick={goToLandingPage} />
           <ButtonImage src={mainPageButton} alt="Start Test" onClick={startTest} />
-          <ButtonImage src={mainPageButton2} alt="Start Test" onClick={goToLandingPage} bottom="9%" width="50%" />
+          <ButtonImage src={mainPageButton2} alt="Start Test" onClick={goToLandingPage} bottom="9%" width="50%" maxwidth="250px" />
         </>
       ) : (
         <>
