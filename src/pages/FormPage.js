@@ -46,7 +46,7 @@ const Description = styled.p`
   @media (max-width: 768px) {
     width: auto;
     padding: 1vh 5%;
-    font-size: ${({ mobileSize }) => mobileSize || '15px'};
+    font-size: ${({ mobilesize }) => mobilesize || '15px'};
   }
 `;
 
@@ -61,7 +61,7 @@ const Button = styled.button`
   width: 190px;
   padding: 20px 5px;
   color: white;
-  background-color: ${({ bgColor }) => bgColor || '#9C41FF'};
+  background-color: ${({ bgcolor }) => bgcolor || '#9C41FF'};
   border: 0;
   font-weight: 200;
   font-size: 20px;
@@ -72,7 +72,7 @@ const Button = styled.button`
   gap: 10px;
   &:hover {
     cursor: pointer;
-    background-color: ${({ hoverColor }) => hoverColor || '#6d2db2'};
+    background-color: ${({ hovercolor }) => hovercolor || '#6d2db2'};
   }
 
   @media (max-width: 768px) {

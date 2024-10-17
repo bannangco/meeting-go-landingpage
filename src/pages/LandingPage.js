@@ -66,7 +66,7 @@ const DescriptionText = styled.p`
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: ${({ mobileSize }) => mobileSize || '12px'};
+    font-size: ${({ mobilesize }) => mobilesize || '12px'};
   }
 `;
 
@@ -99,7 +99,7 @@ const StyledButton = styled.button`
   padding: 20px 5px;
   margin: 15px 0 20px 0;
   color: white;
-  background-color: ${({ bgColor }) => bgColor || '#9C41FF'};
+  background-color: ${({ bgcolor }) => bgcolor || '#9C41FF'};
   border: 0;
   font-weight: 200;
   font-size: 20px;
@@ -110,7 +110,7 @@ const StyledButton = styled.button`
   gap: 10px;
   &:hover {
     cursor: pointer;
-    background-color: ${({ hoverColor }) => hoverColor || '#6d2db2'};
+    background-color: ${({ hovercolor }) => hovercolor || '#6d2db2'};
   }
 
   @media (max-width: 768px) {
@@ -134,7 +134,7 @@ const ImageWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: ${({ alignItems }) => alignItems || 'flex-end'};
+  align-items: ${({ alignitems }) => alignitems || 'flex-end'};
   margin: ${({ margin }) => margin || '0'};
 
   img {
@@ -265,7 +265,7 @@ const LandingPage = () => {
               </div>
               <div>
                 <SmallText>미팅고의 소식이 궁금하다면</SmallText>
-                <StyledButton bgColor="#5f5f5f" hoverColor="#424242" onClick={handleInstagramClick}>
+                <StyledButton bgcolor="#5f5f5f" hovercolor="#424242" onClick={handleInstagramClick}>
                   인스타그램
                   <ImageWithFallback
                     svgSrc="\img\instagram_icon.svg"
@@ -281,7 +281,7 @@ const LandingPage = () => {
             </InfoText> */}
           </CenteredDescription>
 
-          <ImageWrapper alignItems="center" margin="8vh 0 2vh 0" width="138px">
+          <ImageWrapper alignitems="center" margin="8vh 0 2vh 0" width="138px">
             <ImageWithFallback
               svgSrc="\img\star.svg"
               webpSrc="\img\star.webp"
@@ -290,7 +290,7 @@ const LandingPage = () => {
             />
           </ImageWrapper>
           <SectionTitle> 미팅GO는 달라요 </SectionTitle>
-          <DescriptionText weight="200" size="15px" mobileSize="14px">
+          <DescriptionText weight="200" size="15px" mobilesize="14px">
             미팅GO만의 차별점을 아래에서 확인해보세요 🤗
           </DescriptionText>
 
@@ -310,8 +310,8 @@ const LandingPage = () => {
             </ImageWrapper>
           </Section>
 
-          <Section reverse>
-            <TextContainer alignItems="flex-end" textAlign="right">
+          <Section reverse="true">
+            <TextContainer alignitems="flex-end">
               <SubSectionTitle>미팅 팀 평가를 통한 실사용자 관리</SubSectionTitle>
               <DescriptionText>
                 미팅 후 상대 팀에 대한 리뷰를 남길 수 있고, <br/> 본인의 프로필에 선택된 리뷰를 표시해 우호도를 높일 수 있습니다.
@@ -352,7 +352,7 @@ const LandingPage = () => {
               alt="Kiss Emoji Image"
             />
           </ImageWrapper>
-          <DescriptionText weight="300" size="24px" mobileSize="20px">
+          <DescriptionText weight="300" size="24px" mobilesize="20px">
             지금 바로 미팅GO와 함께<br />행복한 대학생활을 즐겨 보세요😄<br/><br/>
           </DescriptionText>
           <StyledButton id="Btn_start" onClick={(e) => handleButtonClick(e, 'click_start_now_bottom')}>
