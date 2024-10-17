@@ -46,31 +46,7 @@ const Description = styled.p`
   @media (max-width: 768px) {
     width: auto;
     padding: 1vh 5%;
-    font-size: ${({ mobileSize }) => mobileSize || '15px'};
-  }
-`;
-
-const Button = styled.button`
-  width: 190px;
-  padding: 20px 5px;
-  color: white;
-  background-color: ${({ bgColor }) => bgColor || '#9C41FF'};
-  border: 0;
-  font-weight: 200;
-  font-size: 20px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  &:hover {
-    cursor: pointer;
-    background-color: ${({ hoverColor }) => hoverColor || '#6d2db2'};
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    font-size: 18px;
+    font-size: ${({ mobilesize }) => mobilesize || '15px'};
   }
 `;
 
