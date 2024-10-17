@@ -87,7 +87,11 @@ const MyFoodTitle = styled.h2`
   font-size: 25px;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
+
+  @media (min-width: 500px) {
+    font-size: 28px;
+  }
 `;
 
 const ResultImage = styled.img`
@@ -95,7 +99,7 @@ const ResultImage = styled.img`
   max-width: 76%;
   height: auto;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   border-radius: 10px;
 `;
 
@@ -116,6 +120,10 @@ const ResultShort = styled.p`
   color: #fff;
   margin-top: -7px;
   margin-bottom: 0px;
+
+  @media (min-width: 500px) {
+    font-size: 16px;
+  }
 `;
 
 const DescriptionBox = styled.div`
@@ -140,6 +148,18 @@ const DescriptionText = styled.p`
   white-space: pre-wrap;
   line-height: 1;
   margin: 0px;
+
+  @media (min-width: 450px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 550px) {
+    font-size: 13px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const CompatibilityPart = styled.div`
@@ -162,6 +182,10 @@ const CompatibilityTitle = styled.h4`
   color: #fff;
   margin-top: 10px;
   margin-bottom: 5px;
+
+  @media (min-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const CompatibilityImage = styled.img`
@@ -180,6 +204,10 @@ const CompatibilityShort = styled.p`
   margin-top: 8px;
   margin-bottom: 0px;
   text-align: center;
+
+  @media (min-width: 500px) {
+    font-size: 12px;
+  }
 `;
 
 const CompatibilityName = styled.p`
@@ -190,6 +218,10 @@ const CompatibilityName = styled.p`
   margin-top: 2px;
   text-align: center;
   line-height: 1.2;
+
+  @media (min-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const ButtonsPart = styled.div`
