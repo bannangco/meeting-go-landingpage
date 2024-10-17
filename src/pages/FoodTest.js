@@ -214,7 +214,6 @@ const FoodTest = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       const calcResult = calculateResult(answers);
-      alert("Test Completed!");
       navigate(`/food-test/result/${calcResult}`);
     }
   };
