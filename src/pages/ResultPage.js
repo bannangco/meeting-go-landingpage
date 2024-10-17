@@ -322,6 +322,10 @@ const ResultPage = () => {
       });
     } else {
       alert('카카오톡 공유를 사용할 수 없습니다.');
+      logEvent(analytics, 'error', {
+        message: 'Kakao.share error',
+        location: 'shareToKakao',
+      });
     }
   };
 
@@ -334,9 +338,19 @@ const ResultPage = () => {
         url: `${window.location.origin}/food-test/share/${resultId}`,
       })
         .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error));
+        .catch((error) => {
+          console.log('Error sharing', error);
+          logEvent(analytics, 'error', {
+            message: error.message,
+            location: 'shareViaWebAPI',
+          });
+        });
     } else {
       alert('공유 기능을 사용할 수 없습니다. 브라우저를 확인해주세요.');
+      logEvent(analytics, 'error', {
+        message: 'Navigator.share not supported',
+        location: 'shareViaWebAPI',
+      });
     }
   };
 
@@ -356,6 +370,10 @@ const ResultPage = () => {
       })
       .catch((error) => {
         console.error('Error copying text: ', error);
+        logEvent(analytics, 'error', {
+          message: error.message,
+          location: 'copyLink',
+        });
       });
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { analytics } from '../firebase';
@@ -150,10 +150,51 @@ const FoodTest = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1); // -1 means the main page
   const [answers, setAnswers] = useState([]);
 
+  const [questionStartTime, setQuestionStartTime] = useState(null);
+  const [hasAbandoned, setHasAbandoned] = useState(false);
+  const abandonmentTimeout = useRef(null);
+
   useEffect(() => {
     // Log event when the component mounts
     logEvent(analytics, 'food_test_visit');
   }, []);
+
+  useEffect(() => {
+    return () => {
+      // Component will unmount
+      if (currentQuestionIndex >= 0 && currentQuestionIndex < questions.length && !hasAbandoned) {
+        logEvent(analytics, 'test_abandoned', {
+          last_question_index: currentQuestionIndex,
+        });
+      }
+      // Clear any timeouts
+      if (abandonmentTimeout.current) {
+        clearTimeout(abandonmentTimeout.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (currentQuestionIndex >= 0) {
+      // Start timer for the current question
+      setQuestionStartTime(Date.now());
+  
+      // Clear any existing abandonment timeout
+      if (abandonmentTimeout.current) {
+        clearTimeout(abandonmentTimeout.current);
+      }
+  
+      // Set a timeout to detect abandonment (e.g., 60 seconds of inactivity)
+      abandonmentTimeout.current = setTimeout(() => {
+        if (currentQuestionIndex < questions.length && !hasAbandoned) {
+          logEvent(analytics, 'test_abandoned', {
+            last_question_index: currentQuestionIndex,
+          });
+          setHasAbandoned(true);
+        }
+      }, 60000); // 60 seconds
+    }
+  }, [currentQuestionIndex]);
 
   const questions = [
     {
@@ -217,13 +258,20 @@ const FoodTest = () => {
   };
 
   const handleAnswerClick = async (buttonIndex) => {
+    const timeSpent = Date.now() - questionStartTime;
+
     const newAnswers = [...answers, buttonIndex];
     setAnswers(newAnswers);
 
-    logEvent(analytics, 'answer_selected', {
+    logEvent(analytics, 'question_answered', {
       question_index: currentQuestionIndex,
       answer_index: buttonIndex,
+      time_spent_ms: timeSpent,
     });
+
+    if (abandonmentTimeout.current) {
+      clearTimeout(abandonmentTimeout.current);
+    }
 
     // Move to the next question or show result if it's the last question
     if (currentQuestionIndex < questions.length - 1) {
@@ -237,7 +285,7 @@ const FoodTest = () => {
         result_id: calcResult,
         answers: newAnswers.toString(), // Convert array to string for logging
       });
-      
+
       try {
         await axios.post(`https://${process.env.REACT_APP_API_DNS}/api/foodTest/testResult`, {
           answers: answers,
