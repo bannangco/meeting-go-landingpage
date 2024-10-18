@@ -22,24 +22,7 @@
     "build": "CI=false react-scripts build",
     "build-win": "set CI=false&&react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "inlineCss": true,
-    "skipThirdPartyRequests": true,
-    "puppeteer": {
-      "timeout": 30000
-    },
-    "include": [
-      "/",
-      "/download",
-      "/food-test"
-    ],
-    "exclude": [
-      "/food-test/result/*",
-      "/food-test/share/*"
-    ]
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
