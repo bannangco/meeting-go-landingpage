@@ -235,7 +235,7 @@ const SharePage = () => {
 
   useEffect(() => {
     // Log event when the component mounts
-    logEvent(analytics, 'share_page_visit', {
+    logEvent(analytics, 'foodtest_share_page_visit', {
       result_id: resultId,
       result_title: result.title,
     });
@@ -246,7 +246,7 @@ const SharePage = () => {
   }
 
   const retakeTest = () => {
-    logEvent(analytics, 'share_page_button_click');
+    logEvent(analytics, 'foodtest_share_page_button_click');
     navigate("/food-test");
   };
 

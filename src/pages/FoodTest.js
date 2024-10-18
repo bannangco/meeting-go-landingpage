@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { analytics } from '../firebase';
 import { logEvent } from "firebase/analytics";
+import { Helmet } from "react-helmet-async";
 import axios from 'axios';
 
 import backIcon from "../assets/back_vector.svg";
@@ -156,14 +157,14 @@ const FoodTest = () => {
 
   useEffect(() => {
     // Log event when the component mounts
-    logEvent(analytics, 'food_test_visit');
+    logEvent(analytics, 'foodtest_visit');
   }, []);
 
   useEffect(() => {
     return () => {
       // Component will unmount
       if (currentQuestionIndex >= 0 && currentQuestionIndex < questions.length && !hasAbandoned) {
-        logEvent(analytics, 'test_abandoned', {
+        logEvent(analytics, 'foodtest_abandoned', {
           last_question_index: currentQuestionIndex,
         });
       }
@@ -187,7 +188,7 @@ const FoodTest = () => {
       // Set a timeout to detect abandonment (e.g., 60 seconds of inactivity)
       abandonmentTimeout.current = setTimeout(() => {
         if (currentQuestionIndex < questions.length && !hasAbandoned) {
-          logEvent(analytics, 'test_abandoned', {
+          logEvent(analytics, 'foodtest_abandoned', {
             last_question_index: currentQuestionIndex,
           });
           setHasAbandoned(true);
@@ -248,12 +249,12 @@ const FoodTest = () => {
   ];
 
   const goToLandingPage = () => {
-    logEvent(analytics, 'landing_page_button_click');
+    logEvent(analytics, 'foodtest_landing_page_button_click');
     navigate("/");
   };
 
   const startTest = () => {
-    logEvent(analytics, 'start_test_button_click');
+    logEvent(analytics, 'foodtest_start_test_button_click');
     setCurrentQuestionIndex(0);
   };
 
@@ -263,7 +264,7 @@ const FoodTest = () => {
     const newAnswers = [...answers, buttonIndex];
     setAnswers(newAnswers);
 
-    logEvent(analytics, 'question_answered', {
+    logEvent(analytics, `foodtest_question_answered`, {
       question_index: currentQuestionIndex,
       answer_index: buttonIndex,
       time_spent_ms: timeSpent,
@@ -281,7 +282,7 @@ const FoodTest = () => {
       console.log("answers:", answers);
       console.log("calcResult:", calcResult);
 
-      logEvent(analytics, 'test_completed', {
+      logEvent(analytics, 'foodtest_test_completed', {
         result_id: calcResult,
         answers: newAnswers.toString(), // Convert array to string for logging
       });
@@ -436,6 +437,28 @@ const FoodTest = () => {
 
   return (
     <>
+    <Helmet>
+      <title>연애유형으로 보는 나의 흑백요리사 음식 테스트</title>
+      <meta
+        name="description"
+        content="흑백요리사 음식들 중 나와 가장 잘 어울리는 음식은 어떤걸까요? 연애 성향을 기반으로 나의 요리를 찾아주는 재미있는 음식 성향 테스트를 진행해보세요!"
+      />
+      <meta name="keywords" content="흑백요리사, 유형테스트, MBTI, 연애유형, 음식테스트, 요리테스트, 미팅GO, 재미있는 테스트" />
+      <meta name="author" content="미팅GO" />
+      <meta property='og:locale'     content='ko_KR' />
+      <meta property="og:title" content="나의 흑백요리사 음식 테스트" />
+      <meta
+        property="og:description"
+        content="나의 연애유형으로 나와 가장 잘 어울리는 흑백요리사 음식을 찾아보세요!"
+      />
+      <meta property="og:image" content="https://meetinggo.kr/foodtset_ogimage.png" />
+      <meta property="og:url" content="https://meetinggo.kr/food-test" />
+      <meta name="twitter:title" content="나의 흑백요리사 음식 테스트" />
+      <meta name="twitter:description" content="나의 연애유형으로 나와 가장 잘 어울리는 흑백요리사 음식을 찾아보세요!" />
+      <meta name="twitter:image" content="https://meetinggo.kr/foodtset_ogimage.png" />
+      <meta name="twitter:card" content="https://meetinggo.kr/foodtset_ogimage.png" />
+      <link rel="canonical" href="https://meetinggo.kr/food-test" />
+    </Helmet>
     <GlobalStyle />
     <Container bgimage={currentQuestionIndex === -1 ? mainPageImage : currentQuestion.background}>
       {currentQuestionIndex === -1 ? (
