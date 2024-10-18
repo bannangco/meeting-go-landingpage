@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { HelmetProvider } from "react-helmet-async";
-import { hydrate, render } from 'react-dom';
+
+const helmetContext = {};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -19,7 +20,7 @@ if (container.hasChildNodes()) {
   ReactDOM.hydrateRoot(
     container,
     <React.StrictMode>
-      <HelmetProvider>
+      <HelmetProvider context={helmetContext}>
         <App />
       </HelmetProvider>
     </React.StrictMode>
