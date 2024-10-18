@@ -26,7 +26,20 @@
     "postbuild": "react-snap"
   },
   "reactSnap": {
-    "inlineCss": true
+    "inlineCss": true,
+    "skipThirdPartyRequests": true,
+    "puppeteer": {
+      "timeout": 30000
+    },
+    "include": [
+      "/",
+      "/download",
+      "/food-test"
+    ],
+    "exclude": [
+      "/food-test/result/*",
+      "/food-test/share/*"
+    ]
   },
   "eslintConfig": {
     "extends": [

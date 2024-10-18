@@ -274,8 +274,16 @@ const ResultPage = () => {
   const resultRef = useRef(null);
 
   useEffect(() => {
-    if (window.Kakao && !window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+      script.async = true;
+      script.onload = () => {
+        if (window.Kakao && !window.Kakao.isInitialized()) {
+          window.Kakao.init(process.env.REACT_APP_KAKAO_JAVASCRIPT_KEY);
+        }
+      };
+      document.body.appendChild(script);
     }
   }, []);
 
