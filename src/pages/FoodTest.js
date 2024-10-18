@@ -445,18 +445,16 @@ const FoodTest = () => {
       />
       <meta name="keywords" content="흑백요리사, 유형테스트, MBTI, 연애유형, 음식테스트, 요리테스트, 미팅GO, 재미있는 테스트" />
       <meta name="author" content="미팅GO" />
+      <meta property="og:type"       content="website" />
       <meta property='og:locale'     content='ko_KR' />
       <meta property="og:title" content="나의 흑백요리사 음식 테스트" />
-      <meta
-        property="og:description"
-        content="나의 연애유형으로 나와 가장 잘 어울리는 흑백요리사 음식을 찾아보세요!"
-      />
-      <meta property="og:image" content="https://meetinggo.kr/foodtset_ogimage.png" />
+      <meta property="og:description" content="나의 연애유형으로 나와 가장 잘 어울리는 흑백요리사 음식을 찾아보세요!" />
+      <meta property="og:image" content="https://meetinggo.kr/foodtest_ogimage.png" />
       <meta property="og:url" content="https://meetinggo.kr/food-test" />
       <meta name="twitter:title" content="나의 흑백요리사 음식 테스트" />
       <meta name="twitter:description" content="나의 연애유형으로 나와 가장 잘 어울리는 흑백요리사 음식을 찾아보세요!" />
-      <meta name="twitter:image" content="https://meetinggo.kr/foodtset_ogimage.png" />
-      <meta name="twitter:card" content="https://meetinggo.kr/foodtset_ogimage.png" />
+      <meta name="twitter:image" content="https://meetinggo.kr/foodtest_ogimage.png" />
+      <meta name="twitter:card" content="https://meetinggo.kr/foodtest_ogimage.png" />
       <link rel="canonical" href="https://meetinggo.kr/food-test" />
     </Helmet>
     <GlobalStyle />
